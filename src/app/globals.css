@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 7, 13, 24;
+  --background-end-rgb: 11, 21, 40;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: #070D18;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #070D18;
+}
+::-webkit-scrollbar-thumb {
+  background: #183466;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0056B3;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(16, 34, 68, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  background: rgba(24, 52, 102, 0.65);
+  border-color: rgba(0, 168, 255, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px -10px rgba(0, 86, 179, 0.3);
+}
+
+.gradient-text-gold {
+  background: linear-gradient(135deg, #F4D068 0%, #D4AF37 50%, #AA8518 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-blue {
+  background: linear-gradient(135deg, #00D2FF 0%, #0A84FF 50%, #0056B3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
