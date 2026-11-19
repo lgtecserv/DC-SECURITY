@@ -1,137 +1,129 @@
+'use client';
+
 import React from 'react';
-import { Shield, Target, Award, Users, CheckCircle, Building2 } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { CheckCircle2, ArrowRight } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
+import AnimatedCounter from './AnimatedCounter';
 
 export default function AboutSection() {
   return (
-    <section id="sobre" className="py-20 md:py-28 relative overflow-hidden bg-navy-950">
-      {/* Decorative ambient gradient */}
-      <div className="absolute top-1/2 -right-40 w-96 h-96 bg-shield-blue/10 rounded-full blur-3xl pointer-events-none" />
-
+    <section id="sobre" className="py-16 sm:py-24 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-shield-blue/10 border border-shield-blue/30 text-xs font-semibold text-shield-accent uppercase tracking-wider">
-            <span>Sobre a DC SECURE GROUP</span>
+
+        {/* Main 2-column layout matching Trankwyllo Image 2 */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+
+          {/* Left Column: Headquarters / Operations Photo */}
+          <div className="lg:col-span-5">
+            <ScrollReveal animation="fade-right">
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-xl border border-slate-200 group bg-slate-100">
+                <Image 
+                  src="/images/headquarters.jpg"
+                  alt="Sede Operacional da DC SECURE GROUP em Boane Matola Rio"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  priority
+                />
+              </div>
+            </ScrollReveal>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-            Autoridade, Tradição e <span className="gradient-text-blue">Rigor Operacional</span>
-          </h2>
-          <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-            Fundada sob os mais elevados padrões de disciplina e integridade, a <strong>DC SECURE GROUP, Lda</strong> atua na vanguarda da segurança privada em Moçambique.
-          </p>
+
+          {/* Right Column: Text + Checklist + Button */}
+          <div className="lg:col-span-7 space-y-6">
+            <ScrollReveal animation="fade-left">
+              <div>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#102147] tracking-tight mb-4">
+                  Quem somos
+                </h2>
+
+                {/* Description with Orange Left Accent Border */}
+                <div className="border-l-4 border-[#C35614] pl-4 text-slate-700 text-sm sm:text-base leading-relaxed space-y-2">
+                  <p>
+                    <strong>DC SECURE GROUP, Lda</strong> - dedica-se a oferecer soluções completas e personalizadas de segurança. Nosso compromisso é proporcionar tranquilidade e confiança aos nossos clientes, com processos claros, atendimento humanizado e profissional.
+                  </p>
+                  <p>
+                    Trabalhamos com valores que se ajustam ao orçamento dos clientes, mantendo sempre a qualidade e eficiência dos serviços prestados. Registada sob Conservatória nº <strong>100709287</strong> e NUIT <strong>400724423</strong> com sede própria em Boane, Matola Rio.
+                  </p>
+                </div>
+              </div>
+
+              {/* Checklist in 2 columns */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3.5 gap-x-6 pt-4">
+                <div className="flex items-center space-x-2.5 text-sm font-semibold text-[#102147]">
+                  <CheckCircle2 className="w-5 h-5 text-[#C35614] flex-shrink-0" />
+                  <span>Vigilância Patrimonial</span>
+                </div>
+                <div className="flex items-center space-x-2.5 text-sm font-semibold text-[#102147]">
+                  <CheckCircle2 className="w-5 h-5 text-[#C35614] flex-shrink-0" />
+                  <span>Transporte de Valores</span>
+                </div>
+                <div className="flex items-center space-x-2.5 text-sm font-semibold text-[#102147]">
+                  <CheckCircle2 className="w-5 h-5 text-[#C35614] flex-shrink-0" />
+                  <span>Segurança Pessoal & VIP</span>
+                </div>
+                <div className="flex items-center space-x-2.5 text-sm font-semibold text-[#102147]">
+                  <CheckCircle2 className="w-5 h-5 text-[#C35614] flex-shrink-0" />
+                  <span>Consultoria em Segurança</span>
+                </div>
+              </div>
+
+              {/* Buttons: Entre em contacto! & Conhecer Mais */}
+              <div className="pt-6 flex flex-wrap items-center gap-4">
+                <Link
+                  href="/contactos"
+                  className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#C35614] hover:bg-[#A7450D] text-white font-bold text-sm tracking-wide shadow-md transition-all duration-300 active:scale-95 group"
+                >
+                  <span>Entre em contacto!</span>
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Link>
+
+                <Link
+                  href="/quem-somos"
+                  className="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-slate-100 hover:bg-slate-200 text-[#102147] font-bold text-sm tracking-wide transition-all duration-300"
+                >
+                  <span>Nossa História Completa</span>
+                </Link>
+              </div>
+            </ScrollReveal>
+          </div>
+
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Left Column: Corporate Profile & Pillars */}
-          <div className="lg:col-span-7 space-y-6">
-            <div className="space-y-4 text-slate-300 leading-relaxed text-base">
-              <p>
-                A <strong className="text-white">DC SECURE GROUP, Lda</strong> é uma sociedade comercial devidamente registada na Conservatória das Entidades Legais sob o <strong className="text-white">nº 100709287</strong>, titular do NUIT <strong className="text-white">400724423</strong>, liderada pelo Sócio Maioritário e Diretor Executivo <strong className="text-white">Sr. Danício Fabião Chongole</strong>.
-              </p>
-              <p>
-                Com domicílio comercial e instalações operacionais em Boane (Rua do Posto Administrativo da Matola Rio, nº 19, Parcela 14993 com DUAT autorizado), dispomos de uma base física estruturada com salas técnicas, centro de monitoramento e capacidade para gerir operações de alta complexidade em todo o território nacional.
-              </p>
+        {/* Bottom 3 Stat Metric Cards matching Trankwyllo Image 2 with Animation */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-14 sm:pt-16">
+
+          {/* Card 1: Orange */}
+          <ScrollReveal animation="fade-up" delay={100}>
+            <div className="bg-[#C35614] text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center">
+              <span className="text-4xl sm:text-5xl font-black tracking-tight mb-2">
+                <AnimatedCounter end={5000} suffix="+" />
+              </span>
+              <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-orange-100">Protecção confiável</span>
             </div>
+          </ScrollReveal>
 
-            {/* Core Values grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-              <div className="glass-panel p-5 rounded-xl border border-white/5 space-y-2">
-                <div className="flex items-center space-x-3 text-white">
-                  <div className="p-2 rounded-lg bg-shield-blue/20 text-shield-accent">
-                    <Target className="w-5 h-5" />
-                  </div>
-                  <h3 className="font-bold text-base">Missão</h3>
-                </div>
-                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                  Garantir a inviolabilidade do património e a tranquilidade absoluta de nossos clientes por meio de vigilância tática, inteligência preventiva e tecnologias integradas.
-                </p>
-              </div>
-
-              <div className="glass-panel p-5 rounded-xl border border-white/5 space-y-2">
-                <div className="flex items-center space-x-3 text-white">
-                  <div className="p-2 rounded-lg bg-shield-blue/20 text-shield-accent">
-                    <Award className="w-5 h-5" />
-                  </div>
-                  <h3 className="font-bold text-base">Visão</h3>
-                </div>
-                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                  Ser reconhecida como a mais confiável e eficiente empresa de segurança privada em Moçambique, referência em inovação satelital e transporte de valores.
-                </p>
-              </div>
+          {/* Card 2: Deep Navy */}
+          <ScrollReveal animation="fade-up" delay={200}>
+            <div className="bg-[#102147] text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center">
+              <span className="text-4xl sm:text-5xl font-black tracking-tight mb-2">
+                <AnimatedCounter end={5} suffix="+" />
+              </span>
+              <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-300">Anos de Experiência</span>
             </div>
+          </ScrollReveal>
 
-            {/* List of Commitments */}
-            <div className="space-y-3 pt-2">
-              <div className="flex items-center space-x-3 text-sm text-slate-200">
-                <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-                <span>Agentes rigorosamente selecionados, verificados criminalmente e treinados taticamente.</span>
-              </div>
-              <div className="flex items-center space-x-3 text-sm text-slate-200">
-                <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-                <span>Supervisão ostensiva e ronda móvel com comunicação rádio criptografada.</span>
-              </div>
-              <div className="flex items-center space-x-3 text-sm text-slate-200">
-                <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-                <span>Planos de contingência sob medida para indústrias, embaixadas, bancos e residências.</span>
-              </div>
+          {/* Card 3: Orange */}
+          <ScrollReveal animation="fade-up" delay={300}>
+            <div className="bg-[#C35614] text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center">
+              <span className="text-4xl sm:text-5xl font-black tracking-tight mb-2">
+                <AnimatedCounter end={150} suffix="+" />
+              </span>
+              <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-orange-100">Profissionais Homologados</span>
             </div>
-
-          </div>
-
-          {/* Right Column: Visual Infographic & Headquarters Card */}
-          <div className="lg:col-span-5">
-            <div className="relative glass-panel rounded-2xl p-6 sm:p-8 space-y-6 border border-white/10 shadow-2xl">
-              <div className="flex items-center space-x-4 pb-6 border-b border-navy-700/80">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-shield-blue to-navy-900 border border-shield-accent/40 flex items-center justify-center text-white shadow-lg">
-                  <Building2 className="w-7 h-7" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-bold text-white">Sede Operacional</h4>
-                  <p className="text-xs text-slate-400">Edifício Administrativo • Matola Rio</p>
-                </div>
-              </div>
-
-              <div className="space-y-4 text-sm">
-                <div className="flex justify-between py-2 border-b border-navy-800">
-                  <span className="text-slate-400">Razão Social:</span>
-                  <span className="font-semibold text-white">DC SECURE GROUP, Lda</span>
-                </div>
-                <div className="flex justify-between py-2 border-b border-navy-800">
-                  <span className="text-slate-400">Conservatória:</span>
-                  <span className="font-semibold text-shield-accent">100709287</span>
-                </div>
-                <div className="flex justify-between py-2 border-b border-navy-800">
-                  <span className="text-slate-400">NUIT Fiscal:</span>
-                  <span className="font-semibold text-shield-accent">400724423</span>
-                </div>
-                <div className="flex justify-between py-2 border-b border-navy-800">
-                  <span className="text-slate-400">Sócio Maioritário:</span>
-                  <span className="font-semibold text-white">Sr. Danício Fabiao Chongole</span>
-                </div>
-                <div className="flex justify-between py-2 border-b border-navy-800">
-                  <span className="text-slate-400">Província / Distrito:</span>
-                  <span className="font-semibold text-white">Maputo / Boane</span>
-                </div>
-                <div className="flex justify-between py-2">
-                  <span className="text-slate-400">DUAT / Parcela:</span>
-                  <span className="font-semibold text-white">DUAT nº 32 / Parcela 14993</span>
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <div className="p-4 rounded-xl bg-navy-900/90 border border-shield-accent/20 flex items-center space-x-3">
-                  <Shield className="w-8 h-8 text-gold flex-shrink-0" />
-                  <div className="text-xs text-slate-300">
-                    <p className="font-semibold text-white">Licenciada para Atividades de Segurança</p>
-                    <p className="text-slate-400 mt-0.5">Autorização legal para proteção física, eletrónica e transporte de valores.</p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
+          </ScrollReveal>
 
         </div>
 

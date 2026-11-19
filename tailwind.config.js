@@ -8,17 +8,23 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        brand: {
+          primary: '#102147',
+          accent: '#C35614',
+          accentHover: '#A7450D',
+          dark: '#0C1835',
+        },
         navy: {
           950: '#070D18',
-          900: '#0B1528',
-          800: '#102244',
+          900: '#102147',
+          800: '#142959',
           700: '#183466',
           600: '#234C94',
         },
         shield: {
-          blue: '#0056B3',
-          light: '#0A84FF',
-          accent: '#00D2FF',
+          blue: '#102147',
+          light: '#1B3878',
+          accent: '#C35614',
         },
         gold: {
           DEFAULT: '#D4AF37',

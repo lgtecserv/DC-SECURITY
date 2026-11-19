@@ -1,0 +1,497 @@
+'use client';
+
+import React, { useState } from 'react';
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/Hero';
+import Footer from '@/components/Footer';
+import FloatingWidgets from '@/components/FloatingWidgets';
+import ScrollReveal from '@/components/ScrollReveal';
+import { 
+  Phone, 
+  Mail, 
+  MapPin, 
+  Clock, 
+  Send, 
+  CheckCircle2, 
+  MessageSquare, 
+  ShieldCheck, 
+  Navigation, 
+  ArrowUpRight,
+  Sparkles,
+  HelpCircle
+} from 'lucide-react';
+
+export default function ContactosPage() {
+  const [formData, setFormData] = useState({
+    nome: '',
+    telefone: '',
+    email: '',
+    servico: 'Vigilância Patrimonial',
+    localizacao: 'Matola / Boane / Maputo',
+    mensagem: '',
+  });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    // Simulate submission
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsSubmitted(true);
+    }, 800);
+  };
+
+  const handleWhatsAppRedirect = () => {
+    const text = `*Solicitação de Contacto via Website:*%0A` +
+      `*Nome:* ${encodeURIComponent(formData.nome || 'Cliente')}%0A` +
+      `*Telefone:* ${encodeURIComponent(formData.telefone || 'N/A')}%0A` +
+      `*E-mail:* ${encodeURIComponent(formData.email || 'N/A')}%0A` +
+      `*Serviço:* ${encodeURIComponent(formData.servico)}%0A` +
+      `*Localização:* ${encodeURIComponent(formData.localizacao)}%0A` +
+      `*Mensagem:* ${encodeURIComponent(formData.mensagem || 'Gostaria de mais informações.')}`;
+    
+    window.open(`https://wa.me/258845393269?text=${text}`, '_blank');
+  };
+
+  const servicesList = [
+    'Vigilância Patrimonial',
+    'Vigilância e Controlo de Acessos',
+    'Transporte de Fundos e Valores (CIT)',
+    'Segurança Pessoal (Proteção VIP)',
+    'Sistemas de Segurança Electrónica & CCTV',
+    'Rastreio de Viaturas via Satélite',
+    'Formação & Treino de Guardas',
+    'Equipas Cinotécnicas (K9)',
+    'Auditoria e Consultoria de Risco',
+  ];
+
+  const faqs = [
+    {
+      q: 'Qual é o tempo de resposta para um pedido de cotação?',
+      a: 'Nossa equipa comercial e técnica responde no prazo máximo de 2 a 4 horas úteis, com agendamento de visita técnica ao local se necessário.'
+    },
+    {
+      q: 'A DC SECURE GROUP atua fora da província de Maputo?',
+      a: 'Sim. Embora a nossa sede esteja em Boane, Matola Rio, cobrimos operações de escolta, transporte de valores e segurança patrimonial em todo o território nacional.'
+    },
+    {
+      q: 'Os vigilantes possuem seguro e formação certificada?',
+      a: 'Todos os nossos agentes passam por formação continuada, possuem seguro de acidentes e responsabilidade civil, e operam sob alvará homologado pelas autoridades de Moçambique.'
+    }
+  ];
+
+  return (
+    <>
+      <Navbar />
+      <main className="flex-1 bg-white">
+        
+        {/* Expansive Hero Section with HD Video */}
+        <Hero
+          isSubpage={true}
+          badge="ATENDIMENTO PERMANENTE 24/7"
+          pageTitle="Fale Connosco"
+          pageSubtitle="Nossa central de operações e equipa de consultoria comercial estão à sua disposição 24 horas por dia, 365 dias por ano."
+          breadcrumbs={[
+            { label: 'Home', href: '/' },
+            { label: 'Contactos' }
+          ]}
+          ctaText="Enviar Mensagem"
+          ctaLink="#formulario"
+        />
+
+        {/* 1. Canais Rápidos de Contacto em Cards */}
+        <section className="py-16 sm:py-24 bg-white relative">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <ScrollReveal animation="fade-up">
+              <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-orange-100 border border-orange-200 text-xs font-bold text-[#C35614] uppercase tracking-wider">
+                  <span>Canais Diretos</span>
+                </div>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#102147] tracking-tight">
+                  Como Podemos Ajudar Hoje?
+                </h2>
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                  Escolha o canal mais conveniente para falar com a nossa equipa de prontidão ou visite a nossa sede em Boane.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              
+              {/* Card 1: Linhas Telefónicas */}
+              <ScrollReveal animation="fade-up" delay={100}>
+                <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 hover:border-[#C35614]/40 hover:bg-white hover:shadow-2xl transition-all duration-300 h-full flex flex-col justify-between">
+                  <div>
+                    <div className="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-6 shadow-sm">
+                      <Phone className="w-7 h-7" />
+                    </div>
+                    <h3 className="text-lg font-bold text-[#102147] mb-2">Linhas Operacionais</h3>
+                    <p className="text-xs text-slate-500 mb-4">Plantão permanente 24h/7d:</p>
+                    <div className="space-y-1.5">
+                      <a href="tel:+258845393269" className="block text-sm font-bold text-[#102147] hover:text-[#C35614] transition-colors">
+                        +258 84 539 3269
+                      </a>
+                      <a href="tel:+258863013135" className="block text-sm font-bold text-[#102147] hover:text-[#C35614] transition-colors">
+                        +258 86 301 3135
+                      </a>
+                    </div>
+                  </div>
+                  <div className="pt-6 mt-6 border-t border-slate-200/80">
+                    <span className="text-[11px] font-bold text-emerald-600 uppercase">Atendimento Imediato</span>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              {/* Card 2: WhatsApp Corporativo */}
+              <ScrollReveal animation="fade-up" delay={200}>
+                <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 hover:border-[#C35614]/40 hover:bg-white hover:shadow-2xl transition-all duration-300 h-full flex flex-col justify-between">
+                  <div>
+                    <div className="w-14 h-14 rounded-2xl bg-emerald-500 text-white flex items-center justify-center mb-6 shadow-md shadow-emerald-500/20">
+                      <MessageSquare className="w-7 h-7" />
+                    </div>
+                    <h3 className="text-lg font-bold text-[#102147] mb-2">WhatsApp Direto</h3>
+                    <p className="text-xs text-slate-500 mb-4">Converse em tempo real com um consultor:</p>
+                    <p className="text-sm font-bold text-slate-800">
+                      Central Comercial
+                    </p>
+                  </div>
+                  <div className="pt-6 mt-6 border-t border-slate-200/80">
+                    <a
+                      href="https://wa.me/258845393269?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os%20da%20DC%20SECURE%20GROUP."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-xs font-bold text-emerald-600 hover:text-emerald-700 transition-colors"
+                    >
+                      <span>Abrir conversa WhatsApp →</span>
+                    </a>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              {/* Card 3: E-mail Oficial */}
+              <ScrollReveal animation="fade-up" delay={300}>
+                <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 hover:border-[#C35614]/40 hover:bg-white hover:shadow-2xl transition-all duration-300 h-full flex flex-col justify-between">
+                  <div>
+                    <div className="w-14 h-14 rounded-2xl bg-blue-100 text-[#102147] flex items-center justify-center mb-6 shadow-sm">
+                      <Mail className="w-7 h-7" />
+                    </div>
+                    <h3 className="text-lg font-bold text-[#102147] mb-2">Correio Eletrónico</h3>
+                    <p className="text-xs text-slate-500 mb-4">Para propostas e documentação formal:</p>
+                    <div className="space-y-1.5">
+                      <a href="mailto:contacto@dcsecuregroup.co.mz" className="block text-xs font-bold text-[#102147] hover:text-[#C35614] truncate transition-colors">
+                        contacto@dcsecuregroup.co.mz
+                      </a>
+                      <a href="mailto:geral@dcsecuregroup.co.mz" className="block text-xs font-semibold text-slate-600 hover:text-[#C35614] truncate transition-colors">
+                        geral@dcsecuregroup.co.mz
+                      </a>
+                    </div>
+                  </div>
+                  <div className="pt-6 mt-6 border-t border-slate-200/80">
+                    <span className="text-[11px] font-bold text-shield-blue uppercase">Resposta em até 4h</span>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              {/* Card 4: Sede Operacional */}
+              <ScrollReveal animation="fade-up" delay={400}>
+                <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 hover:border-[#C35614]/40 hover:bg-white hover:shadow-2xl transition-all duration-300 h-full flex flex-col justify-between">
+                  <div>
+                    <div className="w-14 h-14 rounded-2xl bg-orange-100 text-[#C35614] flex items-center justify-center mb-6 shadow-sm">
+                      <MapPin className="w-7 h-7" />
+                    </div>
+                    <h3 className="text-lg font-bold text-[#102147] mb-2">Sede Operacional</h3>
+                    <p className="text-xs text-slate-500 mb-2">Matola Rio, Boane:</p>
+                    <p className="text-xs text-slate-700 leading-relaxed font-medium">
+                      Rua da Administração da Matola Rio, nº 19, 2º Andar, Parcela 14993.
+                    </p>
+                  </div>
+                  <div className="pt-6 mt-6 border-t border-slate-200/80">
+                    <a
+                      href="https://maps.google.com/?q=Matola+Rio+Boane+Mozambique"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-xs font-bold text-[#C35614] hover:text-[#A7450D] transition-colors"
+                    >
+                      <span>Ver no Google Maps →</span>
+                    </a>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+            </div>
+          </div>
+        </section>
+
+        {/* 2. Formulário Interativo + Informações Operacionais */}
+        <section id="formulario" className="py-20 sm:py-28 bg-slate-50 border-y border-slate-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+              
+              {/* Formulário (Col 7) */}
+              <div className="lg:col-span-7">
+                <ScrollReveal animation="fade-right">
+                  <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-xl">
+                    
+                    <div className="mb-8">
+                      <div className="inline-flex items-center space-x-2 text-xs font-bold text-[#C35614] uppercase tracking-wider mb-2">
+                        <Sparkles className="w-4 h-4" />
+                        <span>Atendimento Rápido</span>
+                      </div>
+                      <h3 className="text-2xl sm:text-3xl font-extrabold text-[#102147]">
+                        Envie a Sua Mensagem ou Solicitação
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-600 mt-2">
+                        Preencha os campos abaixo para que o nosso oficial comercial prepare uma cotação sob medida.
+                      </p>
+                    </div>
+
+                    {isSubmitted ? (
+                      <div className="p-8 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-4">
+                        <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center">
+                          <CheckCircle2 className="w-10 h-10" />
+                        </div>
+                        <h4 className="text-xl font-bold text-emerald-900">Mensagem Enviada com Sucesso!</h4>
+                        <p className="text-xs sm:text-sm text-emerald-700 max-w-md mx-auto leading-relaxed">
+                          Agradecemos o seu contacto. Um oficial da DC SECURE GROUP entrará em contacto pelo número ou e-mail fornecido nas próximas horas.
+                        </p>
+                        <div className="pt-4 flex flex-wrap justify-center gap-3">
+                          <button
+                            onClick={handleWhatsAppRedirect}
+                            className="inline-flex items-center px-6 py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider shadow-md transition-all"
+                          >
+                            <MessageSquare className="w-4 h-4 mr-2" />
+                            <span>Confirmar via WhatsApp</span>
+                          </button>
+                          <button
+                            onClick={() => setIsSubmitted(false)}
+                            className="inline-flex items-center px-6 py-3 rounded-full bg-white text-slate-700 border border-slate-300 font-bold text-xs uppercase tracking-wider hover:bg-slate-50 transition-all"
+                          >
+                            <span>Nova Mensagem</span>
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      <form onSubmit={handleSubmit} className="space-y-5">
+                        
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                          {/* Nome Completo */}
+                          <div>
+                            <label className="block text-xs font-bold text-slate-700 mb-1.5">
+                              Nome Completo *
+                            </label>
+                            <input
+                              type="text"
+                              required
+                              value={formData.nome}
+                              onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
+                              placeholder="Ex: Carlos Machava"
+                              className="w-full px-4 py-3 rounded-xl border border-slate-300 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#C35614] focus:border-transparent transition"
+                            />
+                          </div>
+
+                          {/* Telefone / WhatsApp */}
+                          <div>
+                            <label className="block text-xs font-bold text-slate-700 mb-1.5">
+                              Telefone / WhatsApp *
+                            </label>
+                            <input
+                              type="tel"
+                              required
+                              value={formData.telefone}
+                              onChange={(e) => setFormData({ ...formData, telefone: e.target.value })}
+                              placeholder="+258 84 000 0000"
+                              className="w-full px-4 py-3 rounded-xl border border-slate-300 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#C35614] focus:border-transparent transition"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                          {/* E-mail */}
+                          <div>
+                            <label className="block text-xs font-bold text-slate-700 mb-1.5">
+                              E-mail Corporativo ou Pessoal *
+                            </label>
+                            <input
+                              type="email"
+                              required
+                              value={formData.email}
+                              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                              placeholder="exemplo@empresa.co.mz"
+                              className="w-full px-4 py-3 rounded-xl border border-slate-300 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#C35614] focus:border-transparent transition"
+                            />
+                          </div>
+
+                          {/* Serviço Pretendido */}
+                          <div>
+                            <label className="block text-xs font-bold text-slate-700 mb-1.5">
+                              Serviço Pretendido *
+                            </label>
+                            <select
+                              value={formData.servico}
+                              onChange={(e) => setFormData({ ...formData, servico: e.target.value })}
+                              className="w-full px-4 py-3 rounded-xl border border-slate-300 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#C35614] focus:border-transparent transition bg-white"
+                            >
+                              {servicesList.map((srv, idx) => (
+                                <option key={idx} value={srv}>{srv}</option>
+                              ))}
+                            </select>
+                          </div>
+                        </div>
+
+                        {/* Localização */}
+                        <div>
+                          <label className="block text-xs font-bold text-slate-700 mb-1.5">
+                            Localização do Posto / Imóvel
+                          </label>
+                          <input
+                            type="text"
+                            value={formData.localizacao}
+                            onChange={(e) => setFormData({ ...formData, localizacao: e.target.value })}
+                            placeholder="Ex: Matola Rio, Boane, Maputo Cidade..."
+                            className="w-full px-4 py-3 rounded-xl border border-slate-300 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#C35614] focus:border-transparent transition"
+                          />
+                        </div>
+
+                        {/* Mensagem */}
+                        <div>
+                          <label className="block text-xs font-bold text-slate-700 mb-1.5">
+                            Detalhes ou Requisitos Específicos
+                          </label>
+                          <textarea
+                            rows={4}
+                            value={formData.mensagem}
+                            onChange={(e) => setFormData({ ...formData, mensagem: e.target.value })}
+                            placeholder="Descreva o tipo de instalação, número de guardas desejados ou qualquer detalhe relevante..."
+                            className="w-full px-4 py-3 rounded-xl border border-slate-300 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#C35614] focus:border-transparent transition resize-none"
+                          />
+                        </div>
+
+                        {/* Botões de Envio */}
+                        <div className="pt-2 flex flex-col sm:flex-row gap-3">
+                          <button
+                            type="submit"
+                            disabled={isLoading}
+                            className="flex-1 inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#C35614] hover:bg-[#A7450D] text-white font-bold text-xs uppercase tracking-wider shadow-lg transition-all active:scale-95 disabled:opacity-50"
+                          >
+                            <Send className="w-4 h-4 mr-2" />
+                            <span>{isLoading ? 'A enviar...' : 'Enviar Mensagem Agora'}</span>
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={handleWhatsAppRedirect}
+                            className="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider shadow-md transition-all active:scale-95"
+                          >
+                            <MessageSquare className="w-4 h-4 mr-2" />
+                            <span>Enviar via WhatsApp</span>
+                          </button>
+                        </div>
+
+                      </form>
+                    )}
+
+                  </div>
+                </ScrollReveal>
+              </div>
+
+              {/* Informações de Apoio & Horários (Col 5) */}
+              <div className="lg:col-span-5 space-y-6">
+                
+                {/* Horários */}
+                <ScrollReveal animation="fade-left" delay={100}>
+                  <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-md space-y-4">
+                    <div className="flex items-center space-x-3 text-[#102147]">
+                      <Clock className="w-6 h-6 text-[#C35614]" />
+                      <h4 className="text-lg font-bold">Horários de Funcionamento</h4>
+                    </div>
+                    <div className="space-y-3 text-xs text-slate-600 pt-2">
+                      <div className="flex justify-between items-center pb-2 border-b border-slate-100">
+                        <span>Central 24h & Piquete Tático:</span>
+                        <span className="font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">24h / 365 dias</span>
+                      </div>
+                      <div className="flex justify-between items-center pb-2 border-b border-slate-100">
+                        <span>Atendimento Administrativo:</span>
+                        <span className="font-semibold text-slate-800">Seg - Sex: 08h00 - 17h00</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span>Gabinete Técnico ao Sábado:</span>
+                        <span className="font-semibold text-slate-800">08h00 - 13h00</span>
+                      </div>
+                    </div>
+                  </div>
+                </ScrollReveal>
+
+                {/* Localização no Mapa Visual */}
+                <ScrollReveal animation="fade-left" delay={200}>
+                  <div className="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+                    <div className="relative z-10 space-y-4">
+                      <div className="flex items-center space-x-3">
+                        <Navigation className="w-5 h-5 text-orange-400" />
+                        <h4 className="font-bold text-base">Hub Estratégico em Boane</h4>
+                      </div>
+                      <p className="text-xs text-slate-300 leading-relaxed">
+                        Posicionamento com acesso rápido à EN4, permitindo despacho tático veloz para Boane, Matola, Machava e Grande Maputo.
+                      </p>
+                      <div className="pt-2">
+                        <a
+                          href="https://maps.google.com/?q=Matola+Rio+Boane+Mozambique"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-[#C35614] hover:bg-[#A7450D] text-white font-bold text-xs uppercase tracking-wider transition-all"
+                        >
+                          <span>Abrir no Google Maps</span>
+                          <ArrowUpRight className="w-4 h-4" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </ScrollReveal>
+
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* 3. Perguntas Frequentes (FAQ) */}
+        <section className="py-20 bg-white relative">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <ScrollReveal animation="fade-up">
+              <div className="text-center mb-12 space-y-3">
+                <div className="inline-flex items-center space-x-2 text-xs font-bold text-[#C35614] uppercase tracking-wider">
+                  <HelpCircle className="w-4 h-4" />
+                  <span>Dúvidas Comuns</span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-[#102147]">
+                  Perguntas Frequentes sobre Atendimento
+                </h3>
+              </div>
+            </ScrollReveal>
+
+            <div className="space-y-4">
+              {faqs.map((faq, idx) => (
+                <ScrollReveal key={idx} animation="fade-up" delay={idx * 100}>
+                  <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-slate-300 transition">
+                    <h4 className="text-base font-bold text-[#102147] mb-2">{faq.q}</h4>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{faq.a}</p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+
+      <Footer />
+      <FloatingWidgets />
+    </>
+  );
+}

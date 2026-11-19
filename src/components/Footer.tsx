@@ -1,161 +1,181 @@
+'use client';
+
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
-import { Shield, Phone, Mail, MapPin, ArrowUp } from 'lucide-react';
+import Image from 'next/image';
+import { MapPin, Mail, Phone, ChevronRight } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-navy-950 border-t border-navy-800 text-slate-400 text-xs relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
-          
-          {/* Col 1: Brand & Legal Details */}
-          <div className="lg:col-span-4 space-y-4">
-            <Link href="/" className="inline-block">
-              <div className="bg-white rounded-lg p-2 inline-flex items-center shadow-md">
-                <Image 
-                  src="/images/logo.png" 
-                  alt="DC SECURE GROUP Logo" 
-                  width={150} 
-                  height={55} 
-                  className="object-contain h-10 w-auto"
+    <footer className="bg-[#102147] text-white text-sm relative">
+      {/* Main Footer Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12">
+
+          {/* Column 1: Sobre a Empresa (Replaces Boletim/Newsletter since blog is excluded) */}
+          <div className="lg:col-span-5 space-y-4">
+            <div className="flex items-center space-x-3 mb-2">
+              <div className="bg-white rounded-xl p-2.5 inline-flex items-center shadow-md">
+                <Image
+                  src="/images/logo-official.png"
+                  alt="DC SECURE GROUP Logo"
+                  width={220}
+                  height={75}
+                  className="object-contain h-12 w-auto"
                 />
               </div>
-            </Link>
-            
-            <p className="text-slate-300 text-xs leading-relaxed">
-              <strong>DC SECURE GROUP, Lda</strong> — Sociedade comercial moçambicana especializada em proteção integrada de pessoas e bens, transporte de valores, vigilância e tecnologia satelital.
+            </div>
+
+            <h3 className="text-lg font-bold text-white tracking-tight">
+              DC SECURE GROUP, Lda
+            </h3>
+
+            <p className="text-slate-200 text-sm leading-relaxed max-w-md">
+              A tranquilidade que você merece, com a confiança que você precisa.
             </p>
 
-            <div className="pt-2 space-y-1.5 text-[11px] text-slate-400 font-mono">
-              <p>Conservatória das Entidades Legais: <strong className="text-slate-200">nº 100709287</strong></p>
-              <p>NUIT Fiscal: <strong className="text-slate-200">400724423</strong></p>
-              <p>Sócio Maioritário: <strong className="text-slate-200">Sr. Danício Fabião Chongole</strong></p>
+            <p className="text-slate-300 text-xs leading-relaxed max-w-md">
+              Sociedade comercial especializada em proteção integrada de pessoas e bens, transporte de valores, vigilância e tecnologia satelital em Moçambique.
+            </p>
+
+            <div className="pt-2 space-y-1 text-xs text-slate-400 font-mono">
+              <p>Conservatória das Entidades Legais: <strong className="text-white">nº 100709287</strong></p>
+              <p>NUIT Fiscal: <strong className="text-white">400724423</strong></p>
+              <p>Sócio Maioritário: <span className="text-slate-300">Sr. Danício Fabião Chongole</span></p>
             </div>
           </div>
 
-          {/* Col 2: Serviços Oficiais */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider">Serviços Oficiais</h4>
-            <ul className="space-y-2 text-xs">
+          {/* Column 2: Links rápidos */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="text-base font-bold text-white tracking-wide">
+              Links rápidos
+            </h4>
+            <ul className="space-y-2.5 text-xs text-slate-300">
               <li>
-                <Link href="#servicos" className="hover:text-shield-accent transition-colors">
-                  Protecção de Pessoas e Bens
+                <Link href="/" className="hover:text-[#C35614] transition-colors flex items-center space-x-1.5 group">
+                  <span className="text-slate-400 group-hover:text-[#C35614] font-bold">&gt;</span>
+                  <span>Home</span>
                 </Link>
               </li>
               <li>
-                <Link href="#servicos" className="hover:text-shield-accent transition-colors">
-                  Vigilância e Controlo de Acessos
+                <Link href="/quem-somos" className="hover:text-[#C35614] transition-colors flex items-center space-x-1.5 group">
+                  <span className="text-slate-400 group-hover:text-[#C35614] font-bold">&gt;</span>
+                  <span>Quem Somos</span>
                 </Link>
               </li>
               <li>
-                <Link href="#servicos" className="hover:text-shield-accent transition-colors">
-                  Transporte de Fundos e Valores
+                <Link href="/servicos" className="hover:text-[#C35614] transition-colors flex items-center space-x-1.5 group">
+                  <span className="text-slate-400 group-hover:text-[#C35614] font-bold">&gt;</span>
+                  <span>Serviços</span>
                 </Link>
               </li>
               <li>
-                <Link href="#servicos" className="hover:text-shield-accent transition-colors">
-                  Proteção VIP / Guarda-Costas
+                <Link href="/#solucoes" className="hover:text-[#C35614] transition-colors flex items-center space-x-1.5 group">
+                  <span className="text-slate-400 group-hover:text-[#C35614] font-bold">&gt;</span>
+                  <span>Soluções</span>
                 </Link>
               </li>
               <li>
-                <Link href="#servicos" className="hover:text-shield-accent transition-colors">
-                  Segurança Electrónica & CCTV
+                <Link href="/contactos" className="hover:text-[#C35614] transition-colors flex items-center space-x-1.5 group">
+                  <span className="text-slate-400 group-hover:text-[#C35614] font-bold">&gt;</span>
+                  <span>Contacte-nos</span>
                 </Link>
               </li>
               <li>
-                <Link href="#servicos" className="hover:text-shield-accent transition-colors">
-                  Rastreio Satélite de Viaturas
-                </Link>
-              </li>
-              <li>
-                <Link href="#servicos" className="hover:text-shield-accent transition-colors">
-                  Treinamento & Estudos de Segurança
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 3: Navegação Rápida */}
-          <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider">Navegação</h4>
-            <ul className="space-y-2 text-xs">
-              <li>
-                <Link href="#inicio" className="hover:text-shield-accent transition-colors">
-                  Página Inicial
-                </Link>
-              </li>
-              <li>
-                <Link href="#sobre" className="hover:text-shield-accent transition-colors">
-                  Sobre a Empresa
-                </Link>
-              </li>
-              <li>
-                <Link href="#tecnologia" className="hover:text-shield-accent transition-colors">
-                  Rastreio Satelital
-                </Link>
-              </li>
-              <li>
-                <Link href="#cotacao" className="hover:text-shield-accent transition-colors">
-                  Pedir Cotação
-                </Link>
-              </li>
-              <li>
-                <Link href="#contacto" className="hover:text-shield-accent transition-colors">
-                  Contactos e Sede
+                <Link href="/contactos" className="hover:text-[#C35614] transition-colors flex items-center space-x-1.5 group">
+                  <span className="text-slate-400 group-hover:text-[#C35614] font-bold">&gt;</span>
+                  <span>Trabalhe Connosco</span>
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Col 4: Sede e Contactos */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider">Sede Operacional</h4>
-            <div className="space-y-2 text-xs text-slate-300">
-              <div className="flex items-start space-x-2">
-                <MapPin className="w-4 h-4 text-shield-accent flex-shrink-0 mt-0.5" />
+          {/* Column 3: Endereço & Contactos */}
+          <div className="lg:col-span-4 space-y-4">
+            <h4 className="text-base font-bold text-white tracking-wide">
+              Endereço
+            </h4>
+
+            <div className="space-y-3 text-xs text-slate-300">
+              <div className="flex items-start space-x-3">
+                <MapPin className="w-4 h-4 text-[#C35614] flex-shrink-0 mt-0.5" />
                 <span>Rua do Posto Administrativo da Matola Rio, nº 19, 2º Andar, Bairro Matola Rio A, Boane - Moçambique</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <Phone className="w-4 h-4 text-shield-accent flex-shrink-0" />
-                <span>+258 84 000 0000 (Central 24h)</span>
+
+              <div className="flex items-center space-x-3">
+                <Mail className="w-4 h-4 text-[#C35614] flex-shrink-0" />
+                <a href="mailto:contacto@dcsecuregroup.co.mz" className="hover:text-white transition-colors">
+                  contacto@dcsecuregroup.co.mz
+                </a>
               </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="w-4 h-4 text-shield-accent flex-shrink-0" />
-                <span>contacto@dcsecuregroup.co.mz</span>
+
+              <div className="flex items-center space-x-3">
+                <Mail className="w-4 h-4 text-[#C35614] flex-shrink-0" />
+                <a href="mailto:comercial@dcsecuregroup.co.mz" className="hover:text-white transition-colors">
+                  comercial@dcsecuregroup.co.mz
+                </a>
+              </div>
+
+              <div className="flex items-center space-x-3">
+                <Phone className="w-4 h-4 text-[#C35614] flex-shrink-0" />
+                <span>+258 84 539 3269 | +258 86 301 3135</span>
               </div>
             </div>
 
-            <div className="pt-2">
-              <Link
-                href="#cotacao"
-                className="w-full inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-lg bg-navy-800 hover:bg-shield-blue text-white text-xs font-semibold border border-white/10 transition-colors"
+            {/* Social Icons matching Trankwyllo */}
+            <div className="pt-2 flex items-center space-x-2.5">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+                className="w-8 h-8 rounded-full bg-[#C35614] hover:bg-[#A7450D] flex items-center justify-center text-white transition-transform hover:scale-105 text-xs font-bold"
               >
-                <span>Solicitar Proposta Comercial</span>
-              </Link>
+                f
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+                className="w-8 h-8 rounded-full bg-[#C35614] hover:bg-[#A7450D] flex items-center justify-center text-white transition-transform hover:scale-105 text-xs font-bold"
+              >
+                ig
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+                className="w-8 h-8 rounded-full bg-[#C35614] hover:bg-[#A7450D] flex items-center justify-center text-white transition-transform hover:scale-105 text-xs font-bold"
+              >
+                in
+              </a>
             </div>
           </div>
 
         </div>
+      </div>
 
-        {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-navy-900 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-4">
+      {/* Bottom Bar */}
+      <div className="border-t border-white/10 bg-[#0c1a38] py-5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-3">
           <p>
-            © {new Date().getFullYear()} DC SECURE GROUP, Lda. Todos os direitos reservados. Licenciado para Atividades de Segurança em Moçambique.
+            © {new Date().getFullYear()} DC SECURE GROUP, Lda. Todos os direitos reservados.
           </p>
-          <div className="flex items-center space-x-6">
-            <span className="text-slate-400">Desenvolvido para Hospedagem de Alta Performance na Vercel</span>
-            <a 
-              href="#inicio" 
-              className="p-2 rounded-lg bg-navy-900 hover:bg-shield-blue text-slate-300 hover:text-white transition"
-              aria-label="Voltar ao Topo"
-            >
-              <ArrowUp className="w-4 h-4" />
-            </a>
-          </div>
-        </div>
 
+          <p className="text-slate-300">
+            Website desenvolvido por :{' '}
+            <a
+              href="https://www.lgtecserv.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-[#C35614] font-semibold underline underline-offset-2 transition-colors"
+            >
+              LG TecServ
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );

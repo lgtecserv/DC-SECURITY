@@ -42,21 +42,18 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-navy-950 relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-0 w-80 h-80 bg-shield-blue/15 rounded-full blur-3xl pointer-events-none" />
-
+    <section className="py-20 md:py-28 bg-slate-50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-shield-blue/10 border border-shield-blue/30 text-xs font-semibold text-shield-accent uppercase tracking-wider">
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-blue-100/70 border border-blue-200 text-xs font-bold text-shield-blue uppercase tracking-wider">
             <span>Diferenciais Competitivos</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-            Por Que Escolher a <span className="gradient-text-blue">DC SECURE GROUP</span>?
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
+            Por Que Escolher a <span className="text-shield-blue">DC SECURE GROUP</span>?
           </h2>
-          <p className="text-base sm:text-lg text-slate-300">
+          <p className="text-base sm:text-lg text-slate-600">
             Muito mais do que vigilância tradicional, oferecemos um ecossistema integrado de inteligência preventiva, proteção armada e tecnologia de ponta.
           </p>
         </div>
@@ -68,29 +65,29 @@ export default function WhyChooseUs() {
             return (
               <div
                 key={index}
-                className="glass-panel rounded-2xl p-7 border border-white/5 hover:border-shield-accent/40 transition-all duration-300 group flex flex-col justify-between"
+                className="bg-white rounded-2xl p-7 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-shield-blue/40 transition-all duration-300 group flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
-                    <div className="w-12 h-12 rounded-xl bg-shield-blue/20 border border-shield-blue/40 flex items-center justify-center text-shield-accent group-hover:bg-shield-blue group-hover:text-white group-hover:scale-110 transition-all">
+                    <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-200/80 flex items-center justify-center text-shield-blue group-hover:bg-shield-blue group-hover:text-white group-hover:scale-110 transition-all">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-navy-900 border border-shield-accent/20 text-shield-accent">
+                    <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-shield-blue">
                       {item.highlight}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-shield-accent transition-colors">
+                  <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-shield-blue transition-colors">
                     {item.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="pt-4 mt-4 border-t border-navy-800/80 flex items-center text-xs text-slate-400 group-hover:text-slate-200 transition-colors">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400 mr-2 flex-shrink-0" />
+                <div className="pt-4 mt-4 border-t border-slate-100 flex items-center text-xs text-slate-500 font-medium group-hover:text-slate-700 transition-colors">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600 mr-2 flex-shrink-0" />
                   <span>Padrão de Qualidade Certificado</span>
                 </div>
               </div>

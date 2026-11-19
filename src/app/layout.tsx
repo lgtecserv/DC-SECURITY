@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import ScrollToTopOnNavigate from '@/components/ScrollToTopOnNavigate';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://dcsecuregroup.co.mz'),
   title: 'DC SECURE GROUP, Lda | Segurança Privada e Vigilância Integrada em Moçambique',
   description: 'A DC SECURE GROUP, Lda é líder em proteção e segurança patrimonial, vigilância, controlo de acessos, transporte de valores, proteção VIP, segurança eletrónica e rastreio de frotas por satélite em Moçambique. NUIT: 400724423.',
   keywords: [
@@ -40,7 +42,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-MZ" className="scroll-smooth">
-      <body className="min-h-screen flex flex-col bg-navy-950 text-slate-100 antialiased selection:bg-shield-blue selection:text-white">
+      <body className="min-h-screen flex flex-col bg-white text-slate-800 antialiased selection:bg-shield-blue selection:text-white">
+        <ScrollToTopOnNavigate />
         {children}
       </body>
     </html>

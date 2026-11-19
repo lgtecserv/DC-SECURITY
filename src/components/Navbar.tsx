@@ -3,11 +3,29 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Shield, Phone, Mail, MapPin, Menu, X, ArrowRight, Clock } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import {
+  Shield,
+  Phone,
+  Mail,
+  MapPin,
+  Menu,
+  X,
+  ChevronDown,
+  CheckCircle2
+} from 'lucide-react';
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [servicesDropdown, setServicesDropdown] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  // Close menus on route change automatically
+  useEffect(() => {
+    setIsOpen(false);
+    setServicesDropdown(false);
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,87 +35,184 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const serviceCategories = [
+    { name: 'Vigilância Patrimonial', href: '/servicos#vigilancia' },
+    { name: 'Vigilância e Controlo de Acessos', href: '/servicos#acessos' },
+    { name: 'Transporte de Fundos e Valores (CIT)', href: '/servicos#valores' },
+    { name: 'Segurança Pessoal (Proteção VIP)', href: '/servicos#vip' },
+    { name: 'Sistemas de Segurança Electrónica & CCTV', href: '/servicos#cctv' },
+    { name: 'Rastreio de Viaturas via Satélite', href: '/servicos#rastreio' },
+    { name: 'Formação & Treino de Guardas', href: '/servicos#treino' },
+    { name: 'Equipas Cinotécnicas (K9)', href: '/servicos#k9' },
+  ];
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      {/* Top Banner with Registration & Contact Details */}
-      <div className="bg-navy-950/90 border-b border-white/10 text-xs py-2 px-4 hidden md:block">
-        <div className="max-w-7xl mx-auto flex justify-between items-center text-slate-300">
-          <div className="flex items-center space-x-6">
-            <span className="flex items-center space-x-1.5 text-slate-400">
-              <Shield className="w-3.5 h-3.5 text-shield-accent" />
-              <span>Entidade Registada: <strong className="text-white">Conservatória nº 100709287</strong> | NUIT: <strong className="text-white">400724423</strong></span>
-            </span>
-            <span className="flex items-center space-x-1.5 text-slate-400">
-              <MapPin className="w-3.5 h-3.5 text-shield-accent" />
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 font-sans">
+      {/* Topbar Navy matching Trankwyllo */}
+      <div className="bg-[#102147] text-white text-xs py-2.5 px-4 hidden lg:block border-b border-white/10">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <div className="flex items-center space-x-6 text-slate-200">
+            <span className="flex items-center space-x-1.5">
+              <MapPin className="w-3.5 h-3.5 text-[#C35614]" />
               <span>Matola Rio, Boane - Moçambique</span>
+            </span>
+            <span className="flex items-center space-x-1.5">
+              <Phone className="w-3.5 h-3.5 text-[#C35614]" />
+              <span>+258 84 539 3269 | +258 86 301 3135</span>
+            </span>
+            <span className="flex items-center space-x-1.5">
+              <Mail className="w-3.5 h-3.5 text-[#C35614]" />
+              <span>contacto@dcsecuregroup.co.mz</span>
             </span>
           </div>
 
-          <div className="flex items-center space-x-6">
-            <span className="flex items-center space-x-1.5 text-emerald-400">
-              <Clock className="w-3.5 h-3.5" />
-              <span>Central de Operações 24/7</span>
-            </span>
-            <a 
-              href="tel:+258840000000" 
-              className="flex items-center space-x-1 text-white hover:text-shield-accent transition-colors font-medium"
+          {/* Social Icons circle buttons */}
+          <div className="flex items-center space-x-2">
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+              className="w-7 h-7 rounded-full bg-[#C35614] hover:bg-[#A7450D] flex items-center justify-center text-white transition-transform hover:scale-105 text-[11px] font-bold"
             >
-              <Phone className="w-3.5 h-3.5 text-shield-accent" />
-              <span>+258 84 000 0000</span>
+              f
+            </a>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Twitter / X"
+              className="w-7 h-7 rounded-full bg-[#C35614] hover:bg-[#A7450D] flex items-center justify-center text-white transition-transform hover:scale-105 text-[11px] font-bold"
+            >
+              𝕏
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="w-7 h-7 rounded-full bg-[#C35614] hover:bg-[#A7450D] flex items-center justify-center text-white transition-transform hover:scale-105 text-[11px] font-bold"
+            >
+              ig
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="w-7 h-7 rounded-full bg-[#C35614] hover:bg-[#A7450D] flex items-center justify-center text-white transition-transform hover:scale-105 text-[11px] font-bold"
+            >
+              in
             </a>
           </div>
         </div>
       </div>
 
       {/* Main Navbar */}
-      <nav className={`transition-all duration-300 ${
-        scrolled 
-          ? 'bg-navy-900/95 backdrop-blur-md shadow-xl border-b border-navy-700/50 py-3' 
-          : 'bg-navy-900/80 backdrop-blur-sm py-4'
-      }`}>
+      <nav className={`transition-all duration-300 ${scrolled
+        ? 'bg-white shadow-md py-2 border-b border-slate-200'
+        : 'bg-white shadow-sm py-3 border-b border-slate-100'
+        }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-3 group">
-              <div className="relative bg-white rounded-lg p-1.5 shadow-md flex items-center justify-center transition-transform group-hover:scale-105">
-                <Image 
-                  src="/images/logo.png" 
-                  alt="DC SECURE GROUP Logo" 
-                  width={140} 
-                  height={50} 
-                  className="object-contain h-10 w-auto"
+            <Link href="/" className="flex items-center py-1 group">
+              <div className="relative flex items-center justify-center transition-transform group-hover:scale-105">
+                <Image
+                  src="/images/logo-official.png"
+                  alt="DC SECURE GROUP Logo"
+                  width={240}
+                  height={80}
+                  className="object-contain h-14 sm:h-16 lg:h-20 w-auto"
                   priority
                 />
               </div>
             </Link>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden lg:flex items-center space-x-8">
-              <Link href="#inicio" className="text-sm font-medium text-slate-200 hover:text-shield-accent transition-colors">
-                Início
+            <div className="hidden lg:flex items-center space-x-7">
+              <Link
+                href="/"
+                className={`text-sm font-semibold transition-colors py-2 ${pathname === '/'
+                  ? 'text-[#C35614] border-b-2 border-[#C35614]'
+                  : 'text-[#102147] hover:text-[#C35614]'
+                  }`}
+              >
+                Home
               </Link>
-              <Link href="#sobre" className="text-sm font-medium text-slate-200 hover:text-shield-accent transition-colors">
-                A Empresa
+
+              <Link
+                href="/quem-somos"
+                className={`text-sm font-semibold transition-colors py-2 ${pathname === '/quem-somos'
+                  ? 'text-[#C35614] border-b-2 border-[#C35614]'
+                  : 'text-[#102147] hover:text-[#C35614]'
+                  }`}
+              >
+                Quem_Somos
               </Link>
-              <Link href="#servicos" className="text-sm font-medium text-slate-200 hover:text-shield-accent transition-colors">
-                Serviços Oficiais
-              </Link>
-              <Link href="#tecnologia" className="text-sm font-medium text-slate-200 hover:text-shield-accent transition-colors">
-                Rastreio & Tecnologia
-              </Link>
-              <Link href="#contacto" className="text-sm font-medium text-slate-200 hover:text-shield-accent transition-colors">
+
+              {/* Services & Solutions with Dropdown Menu */}
+              <div
+                className="relative py-2"
+                onMouseEnter={() => setServicesDropdown(true)}
+                onMouseLeave={() => setServicesDropdown(false)}
+              >
+                <Link
+                  href="/servicos"
+                  className={`flex items-center space-x-1 text-sm font-semibold transition-colors ${pathname.startsWith('/servicos')
+                    ? 'text-[#C35614] border-b-2 border-[#C35614]'
+                    : 'text-[#102147] hover:text-[#C35614]'
+                    }`}
+                >
+                  <span>Serviços & Soluções</span>
+                  <ChevronDown className="w-4 h-4 text-slate-500" />
+                </Link>
+
+                {/* Dropdown Container */}
+                {servicesDropdown && (
+                  <div className="absolute top-full left-0 w-72 bg-white rounded-2xl shadow-2xl border border-slate-200/80 py-3 mt-1 z-50 animate-fadeIn">
+                    <div className="px-4 py-1.5 border-b border-slate-100 mb-1">
+                      <Link
+                        href="/servicos"
+                        onClick={() => setServicesDropdown(false)}
+                        className="text-xs font-bold text-[#C35614] hover:underline"
+                      >
+                        Ver Todos os Serviços →
+                      </Link>
+                    </div>
+                    {serviceCategories.map((cat, idx) => (
+                      <Link
+                        key={idx}
+                        href={cat.href}
+                        onClick={() => setServicesDropdown(false)}
+                        className="flex items-center px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-[#C35614] transition-colors"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#C35614] mr-2.5 opacity-60" />
+                        <span>{cat.name}</span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <Link
+                href="/contactos"
+                className={`text-sm font-semibold transition-colors py-2 ${pathname === '/contactos'
+                  ? 'text-[#C35614] border-b-2 border-[#C35614]'
+                  : 'text-[#102147] hover:text-[#C35614]'
+                  }`}
+              >
                 Contactos
               </Link>
             </div>
 
-            {/* CTA Button */}
-            <div className="hidden lg:flex items-center space-x-4">
+            {/* Action Button: Trabalhe Connosco (Redirects to /contactos) */}
+            <div className="hidden lg:flex items-center space-x-3">
               <Link 
-                href="#cotacao" 
-                className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-shield-blue to-blue-600 text-white font-medium text-sm shadow-lg shadow-shield-blue/30 hover:brightness-110 active:scale-95 transition-all"
+                href="/contactos" 
+                className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-[#C35614] hover:bg-[#A7450D] text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all active:scale-95"
               >
-                <span>Solicitar Cotação</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>Trabalhe Connosco</span>
               </Link>
             </div>
 
@@ -106,62 +221,70 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-lg bg-navy-800 text-slate-200 hover:text-white focus:outline-none"
-                aria-label="Abrir Menu"
+                className="p-2.5 rounded-lg bg-slate-100 text-slate-800 hover:bg-slate-200 active:scale-95 focus:outline-none transition-transform"
+                aria-label={isOpen ? "Fechar Menu" : "Abrir Menu"}
               >
-                {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {isOpen ? <X className="w-6 h-6 text-[#C35614]" /> : <Menu className="w-6 h-6 text-slate-800" />}
               </button>
             </div>
           </div>
         </div>
 
-        {/* Mobile Dropdown Menu */}
+        {/* Mobile Dropdown Menu with independent scroll */}
         {isOpen && (
-          <div className="lg:hidden bg-navy-900 border-b border-navy-700/80 px-4 pt-3 pb-6 space-y-3 mt-3 shadow-2xl">
-            <Link 
-              href="#inicio" 
-              onClick={() => setIsOpen(false)}
-              className="block px-3 py-2 rounded-md text-base font-medium text-slate-100 hover:bg-navy-800 hover:text-shield-accent"
+          <div className="lg:hidden bg-white border-b border-slate-200 px-5 pt-3 pb-8 space-y-3 mt-2 shadow-2xl max-h-[calc(100vh-85px)] overflow-y-auto overscroll-contain">
+            <Link
+              href="/"
+              className={`block px-4 py-3 rounded-xl text-sm font-bold transition-colors ${
+                pathname === '/' ? 'text-[#C35614] bg-orange-50' : 'text-slate-800 hover:bg-slate-50'
+              }`}
             >
-              Início
+              Home
             </Link>
-            <Link 
-              href="#sobre" 
-              onClick={() => setIsOpen(false)}
-              className="block px-3 py-2 rounded-md text-base font-medium text-slate-100 hover:bg-navy-800 hover:text-shield-accent"
+            <Link
+              href="/quem-somos"
+              className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${
+                pathname === '/quem-somos' ? 'text-[#C35614] bg-orange-50 font-bold' : 'text-slate-800 hover:bg-slate-50'
+              }`}
             >
-              A Empresa
+              Quem_Somos
             </Link>
-            <Link 
-              href="#servicos" 
-              onClick={() => setIsOpen(false)}
-              className="block px-3 py-2 rounded-md text-base font-medium text-slate-100 hover:bg-navy-800 hover:text-shield-accent"
-            >
-              Serviços Oficiais
-            </Link>
-            <Link 
-              href="#tecnologia" 
-              onClick={() => setIsOpen(false)}
-              className="block px-3 py-2 rounded-md text-base font-medium text-slate-100 hover:bg-navy-800 hover:text-shield-accent"
-            >
-              Rastreio & Tecnologia
-            </Link>
-            <Link 
-              href="#contacto" 
-              onClick={() => setIsOpen(false)}
-              className="block px-3 py-2 rounded-md text-base font-medium text-slate-100 hover:bg-navy-800 hover:text-shield-accent"
+
+            <div className="px-4 py-2">
+              <Link
+                href="/servicos"
+                className="block text-xs font-bold text-[#C35614] uppercase tracking-wider mb-2.5 hover:underline"
+              >
+                Serviços & Soluções (Ver Todos) →
+              </Link>
+              <div className="pl-3 space-y-2 border-l-2 border-slate-200">
+                {serviceCategories.map((cat, idx) => (
+                  <Link
+                    key={idx}
+                    href={cat.href}
+                    className="block text-xs font-medium text-slate-700 hover:text-[#C35614] py-1 transition-colors"
+                  >
+                    {cat.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <Link
+              href="/contactos"
+              className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${
+                pathname === '/contactos' ? 'text-[#C35614] bg-orange-50 font-bold' : 'text-slate-800 hover:bg-slate-50'
+              }`}
             >
               Contactos
             </Link>
 
-            <div className="pt-4 border-t border-navy-800">
+            <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
               <Link 
-                href="#cotacao" 
-                onClick={() => setIsOpen(false)}
-                className="w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-lg bg-shield-blue text-white font-medium text-center shadow-lg hover:bg-blue-600 transition"
+                href="/contactos" 
+                className="w-full flex items-center justify-center px-4 py-3.5 rounded-full bg-[#C35614] text-white font-bold text-center text-xs uppercase tracking-wider shadow-md hover:bg-[#A7450D] active:scale-95 transition"
               >
-                <span>Solicitar Cotação Imediata</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>Trabalhe Connosco</span>
               </Link>
             </div>
           </div>
