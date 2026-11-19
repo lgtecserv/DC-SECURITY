@@ -4,100 +4,144 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Shield, Eye, ShieldCheck, Banknote, UserCheck, Video, CheckCircle2, Car, Dog } from 'lucide-react';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export default function OperationsShowcase() {
+  const { t, language } = useLanguage();
   const [activeTab, setActiveTab] = useState(0);
 
   const galleryItems = [
     {
       id: 'patrol',
-      title: 'Vigilância Patrimonial & Patrulha Tática',
-      badge: 'Uniformes Oficiais DC SECURE GROUP',
-      description: 'Nossos agentes de campo atuam com fardamento de alta visibilidade, colete balístico com insígnia oficial, comunicadores digitais e protocolos rigorosos de ronda perimetral.',
+      title: language === 'pt' ? 'Vigilância Patrimonial & Patrulha Tática' : 'Asset Protection & Tactical Patrol',
+      badge: language === 'pt' ? 'Uniformes Oficiais DC SECURE GROUP' : 'DC SECURE GROUP Official Uniforms',
+      description: language === 'pt'
+        ? 'Nossos agentes de campo atuam com fardamento de alta visibilidade, colete balístico com insígnia oficial, comunicadores digitais e protocolos rigorosos de ronda perimetral.'
+        : 'Our field officers operate in high-visibility uniforms, ballistic vests with official insignia, digital radios, and strict perimeter patrol protocols.',
       image: '/images/team-guard-1.jpg',
       icon: Shield,
-      stats: [
+      stats: language === 'pt' ? [
         { label: 'Treinamento Tático', value: '100% Homologado' },
         { label: 'Fiscalização', value: 'Rondas 24/7' },
         { label: 'Antecedentes', value: 'Criminais Certificados' },
+      ] : [
+        { label: 'Tactical Drills', value: '100% Certified' },
+        { label: 'Field Audit', value: '24/7 Patrols' },
+        { label: 'Vetting', value: 'Police Checked' },
       ],
     },
     {
       id: 'fleet',
-      title: 'Frota de Patrulhamento & Pronta Resposta',
-      badge: 'Viaturas Táticas 4x4 Homologadas',
-      description: 'Unidades móveis e viaturas todo-terreno equipadas com sinalização prioritária, rádio móvel e posicionamento GPS contínuo para apoio imediato aos postos.',
+      title: language === 'pt' ? 'Frota de Patrulhamento & Pronta Resposta' : 'Patrol Fleet & Rapid Tactical Response',
+      badge: language === 'pt' ? 'Viaturas Táticas 4x4 Homologadas' : 'Authorized 4x4 Tactical Fleet',
+      description: language === 'pt'
+        ? 'Unidades móveis e viaturas todo-terreno equipadas com sinalização prioritária, rádio móvel e posicionamento GPS contínuo para apoio imediato aos postos.'
+        : 'Mobile all-terrain rapid intervention vehicles fitted with priority flashers, mobile radios, and continuous GPS telemetry for immediate on-site backup.',
       image: '/images/patrol-fleet.jpg',
       icon: Car,
-      stats: [
+      stats: language === 'pt' ? [
         { label: 'Tempo de Chegada', value: '< 5 Minutos' },
         { label: 'Cobertura', value: 'Maputo & Boane' },
         { label: 'Frota', value: '100% Rastreada' },
+      ] : [
+        { label: 'Arrival Time', value: '< 5 Minutes' },
+        { label: 'Coverage', value: 'Maputo & Boane' },
+        { label: 'Fleet GPS', value: '100% Live Tracked' },
       ],
     },
     {
       id: 'cit',
-      title: 'Transporte de Fundos e Valores (CIT)',
-      badge: 'Logística de Valores Blindada',
-      description: 'Equipa armada dedicada à custódia e movimentação de numerário e ativos estratégicos em viaturas com blindagem balística de nível militar e monitoramento satelital contínuo.',
+      title: language === 'pt' ? 'Transporte de Fundos e Valores (CIT)' : 'Cash-In-Transit & Armored Logistics (CIT)',
+      badge: language === 'pt' ? 'Logística de Valores Blindada' : 'Armored Valuables Logistics',
+      description: language === 'pt'
+        ? 'Equipa armada dedicada à custódia e movimentação de numerário e ativos estratégicos em viaturas com blindagem balística de nível militar e monitoramento satelital contínuo.'
+        : 'Dedicated armed crews providing armored transport of currency and high-value commodities in certified bulletproof carriers with satellite tracking.',
       image: '/images/team-guard-3.jpg',
       icon: Banknote,
-      stats: [
+      stats: language === 'pt' ? [
         { label: 'Viaturas', value: 'Blindagem Nível III-A' },
         { label: 'Escolta', value: 'Armada & Criptografada' },
         { label: 'Seguro de Carga', value: 'Cobertura Integral' },
+      ] : [
+        { label: 'Vehicles', value: 'Level III-A Armor' },
+        { label: 'Escort', value: 'Armed & Encrypted' },
+        { label: 'Cargo Policy', value: 'Full Insurance' },
       ],
     },
     {
       id: 'vip',
-      title: 'Proteção Executiva & Guarda-Costas',
+      title: language === 'pt' ? 'Proteção Executiva & Guarda-Costas' : 'Executive Protection & VIP Bodyguards',
       badge: 'Close Protection Officer (CPO)',
-      description: 'Segurança pessoal discreta ou ostensiva para diplomatas, empresários, investidores e figuras públicas com reconhecimento antecipado de trajetos e contenção de ameaças.',
+      description: language === 'pt'
+        ? 'Segurança pessoal discreta ou ostensiva para diplomatas, empresários, investidores e figuras públicas com reconhecimento antecipado de trajetos e contenção de ameaças.'
+        : 'Discreet or high-profile close protection for diplomats, executives, international investors, and delegations with pre-route risk surveys and threat containment.',
       image: '/images/vip-protection.jpg',
       icon: UserCheck,
-      stats: [
+      stats: language === 'pt' ? [
         { label: 'Perfil de Agente', value: 'Defesa Pessoal & Tática' },
         { label: 'Discrição', value: 'Máxima Confidencialidade' },
         { label: 'Logística', value: 'SUVs Blindados sob Consulta' },
+      ] : [
+        { label: 'Officer Profile', value: 'Tactical & Martial' },
+        { label: 'Discretion', value: 'Strict Confidentiality' },
+        { label: 'Logistics', value: 'Armored SUVs on Request' },
       ],
     },
     {
       id: 'control',
-      title: 'Centro de Comando e Monitoramento 24/7',
-      badge: 'Videovigilância e Telemetria Satelital',
-      description: 'Sala de operações ultramoderna com analistas monitorando feeds de CCTV analítico em alta definição, cercas virtuais inteligentes e rastreamento de frotas em tempo real.',
+      title: language === 'pt' ? 'Centro de Comando e Monitoramento 24/7' : '24/7 Command & Monitoring Center (CORT)',
+      badge: language === 'pt' ? 'Videovigilância e Telemetria Satelital' : 'Video Surveillance & Satellite Telematics',
+      description: language === 'pt'
+        ? 'Sala de operações ultramoderna com analistas monitorando feeds de CCTV analítico em alta definição, cercas virtuais inteligentes e rastreamento de frotas em tempo real.'
+        : 'State-of-the-art operations room staffed by certified analysts watching high-definition AI CCTV streams, smart geofences, and fleet telemetry.',
       image: '/images/team-guard-4.jpg',
       icon: Video,
-      stats: [
+      stats: language === 'pt' ? [
         { label: 'Tempo de Alerta', value: '< 10 Segundos' },
         { label: 'Disponibilidade', value: '99.98% SLA' },
         { label: 'Comunicação', value: 'Criptografia Digital' },
+      ] : [
+        { label: 'Alert Trigger', value: '< 10 Seconds' },
+        { label: 'System Uptime', value: '99.98% SLA' },
+        { label: 'Comms', value: 'Encrypted Digital' },
       ],
     },
     {
       id: 'k9',
-      title: 'Equipa Cinotécnica K9 & Cães de Guarda',
-      badge: 'Binómio Condutor-Cão de Alta Defesa',
-      description: 'Patrulhas perimetrais especializadas com cães de raças nobres treinados para dissuasão, busca e contenção preventiva em armazéns, indústrias e condomínios.',
+      title: language === 'pt' ? 'Equipa Cinotécnica K9 & Cães de Guarda' : 'K9 Canine Tactical Patrol Squad',
+      badge: language === 'pt' ? 'Binómio Condutor-Cão de Alta Defesa' : 'Certified Handler-Canine Team',
+      description: language === 'pt'
+        ? 'Patrulhas perimetrais especializadas com cães de raças nobres treinados para dissuasão, busca e contenção preventiva em armazéns, indústrias e condomínios.'
+        : 'Specialized perimeter patrols with certified working dogs trained for intruder deterrence, contraband tracking, and containment in industrial parks.',
       image: '/images/team-guard-2.jpg',
       icon: Dog,
-      stats: [
+      stats: language === 'pt' ? [
         { label: 'Raças Homologadas', value: 'Pastor Alemão / Belga' },
         { label: 'Instrução', value: 'Veterinária & Tática' },
         { label: 'Dissuasão', value: 'Nível Máximo' },
+      ] : [
+        { label: 'Certified Breeds', value: 'German / Malinois' },
+        { label: 'Care', value: 'Vet & Tactical Drill' },
+        { label: 'Deterrence', value: 'Maximum Level' },
       ],
     },
     {
       id: 'access',
-      title: 'Controlo de Acessos & Portaria Inteligente',
-      badge: 'Triagem Tecnológica e Biometria',
-      description: 'Agentes de receção e portaria especializada treinados no atendimento humanizado ao cliente com controlo informatizado de fluxo de visitantes, veículos e mercadorias.',
+      title: language === 'pt' ? 'Controlo de Acessos & Portaria Inteligente' : 'Smart Access Control & Concierge',
+      badge: language === 'pt' ? 'Triagem Tecnológica e Biometria' : 'Biometric Screening & Visitor Audit',
+      description: language === 'pt'
+        ? 'Agentes de receção e portaria especializada treinados no atendimento humanizado ao cliente com controlo informatizado de fluxo de visitantes, veículos e mercadorias.'
+        : 'Smart gatehouse security guards and corporate concierges delivering polite customer service while managing computerized visitor, contractor, and cargo logs.',
       image: '/images/team-guard-2.jpg',
       icon: Eye,
-      stats: [
+      stats: language === 'pt' ? [
         { label: 'Registo Digital', value: 'Tempo Real' },
         { label: 'Biometria / OCR', value: 'Leitura de Matrículas' },
         { label: 'Postura', value: 'Polidez e Firmeza' },
+      ] : [
+        { label: 'Digital Log', value: 'Real-Time Sync' },
+        { label: 'Biometrics / ALPR', value: 'Plate Recognition' },
+        { label: 'Conduct', value: 'Courteous & Firm' },
       ],
     },
   ];
@@ -114,13 +158,20 @@ export default function OperationsShowcase() {
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-shield-blue uppercase tracking-wider">
-            <span>Operações Reais no Terreno</span>
+            <span>{language === 'pt' ? 'Operações Reais no Terreno' : 'Active Field Operations'}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Prontidão Operacional: <span className="text-shield-blue">Nossos Agentes em Ação</span>
+            {language === 'pt' ? (
+              <>Prontidão Operacional: <span className="text-shield-blue">Nossos Agentes em Ação</span></>
+            ) : (
+              <>Operational Readiness: <span className="text-shield-blue">Our Officers in Action</span></>
+            )}
           </h2>
           <p className="text-base sm:text-lg text-slate-600">
-            Veja a presença imponente, o fardamento tático homologado com o emblema oficial da <strong className="text-slate-900">DC SECURE GROUP</strong> e a infraestrutura tecnológica que protege os nossos clientes.
+            {language === 'pt' 
+              ? <>Veja a presença imponente, o fardamento tático homologado com o emblema oficial da <strong className="text-slate-900">DC SECURE GROUP</strong> e a infraestrutura tecnológica que protege os nossos clientes.</>
+              : <>Experience our commanding presence, certified tactical uniforms bearing the official <strong className="text-slate-900">DC SECURE GROUP</strong> insignia, and advanced tactical command systems.</>
+            }
           </p>
         </div>
 
@@ -149,7 +200,7 @@ export default function OperationsShowcase() {
         <div className="bg-slate-50 rounded-3xl border border-slate-200/90 p-6 sm:p-10 shadow-lg relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
-            {/* Visual Image Display - 100% Crisp without dark gradient */}
+            {/* Visual Image Display */}
             <div className="lg:col-span-7 relative">
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[16/10] border border-slate-200 shadow-xl group bg-slate-200">
                 <Image
@@ -178,7 +229,7 @@ export default function OperationsShowcase() {
             <div className="lg:col-span-5 space-y-6">
               <div>
                 <span className="text-xs font-mono font-bold text-shield-blue uppercase tracking-wider">
-                  Divisão de Prontidão Tática
+                  {language === 'pt' ? 'Divisão de Prontidão Tática' : 'Tactical Readiness Division'}
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
                   {current.title}
@@ -207,7 +258,7 @@ export default function OperationsShowcase() {
                   href="/contactos"
                   className="inline-flex items-center space-x-2 text-sm font-bold text-shield-blue hover:text-blue-700 hover:underline transition-colors"
                 >
-                  <span>Solicitar Proposta para este Serviço →</span>
+                  <span>{language === 'pt' ? 'Solicitar Proposta para este Serviço →' : 'Request Proposal for This Service →'}</span>
                 </Link>
               </div>
 

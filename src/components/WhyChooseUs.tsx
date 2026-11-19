@@ -1,43 +1,60 @@
+'use client';
+
 import React from 'react';
-import { ShieldCheck, UserCheck, Radio, Award, Clock, FileCheck2, Zap, Lock } from 'lucide-react';
+import { ShieldCheck, UserCheck, Radio, Clock, FileCheck2, Zap, Lock } from 'lucide-react';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export default function WhyChooseUs() {
+  const { t, language } = useLanguage();
+
   const differentiators = [
     {
       icon: UserCheck,
-      title: 'Triagem e Recrutamento Rigoroso',
-      description: '100% dos nossos agentes passam por verificação minuciosa de antecedentes criminais, testes psicológicos e histórico militar/policial comprovado.',
-      highlight: 'Antecedentes Verificados'
+      title: language === 'pt' ? 'Triagem e Recrutamento Rigoroso' : 'Rigorous Vetting & Screening',
+      description: language === 'pt'
+        ? '100% dos nossos agentes passam por verificação minuciosa de antecedentes criminais, testes psicológicos e histórico militar/policial comprovado.'
+        : '100% of our personnel undergo thorough criminal background checks, psychometric screenings, and verifiable military/police service audits.',
+      highlight: language === 'pt' ? 'Antecedentes Verificados' : 'Police Vetted'
     },
     {
       icon: Radio,
-      title: 'Supervisão Motorizada 24/7',
-      description: 'Rondas ostensivas permanentes com viaturas e motos táticas para fiscalização in loco e apoio imediato aos postos de serviço.',
-      highlight: 'Rondas Constantes'
+      title: language === 'pt' ? 'Supervisão Motorizada 24/7' : '24/7 Motorized Supervision',
+      description: language === 'pt'
+        ? 'Rondas ostensivas permanentes com viaturas e motos táticas para fiscalização in loco e apoio imediato aos postos de serviço.'
+        : 'Continuous high-visibility inspections with 4x4 vehicles and tactical motorbikes to audit guard performance and provide rapid on-site backup.',
+      highlight: language === 'pt' ? 'Rondas Constantes' : 'Active Patrols'
     },
     {
       icon: Zap,
-      title: 'Pronta Resposta em Tempo Recorde',
-      description: 'Equipas de apoio tático posicionadas estrategicamente para intervir em menos de 5 minutos após o acionamento de alarme ou pânico.',
-      highlight: '< 5 min de Resposta'
+      title: language === 'pt' ? 'Pronta Resposta em Tempo Recorde' : 'Rapid Tactical Intervention',
+      description: language === 'pt'
+        ? 'Equipas de apoio tático posicionadas estrategicamente para intervir em menos de 5 minutos após o acionamento de alarme ou pânico.'
+        : 'Tactical squads strategically staged to intervene within 5 minutes following any perimeter breach, panic trigger, or alarm signal.',
+      highlight: language === 'pt' ? '< 5 min de Resposta' : '< 5 min Response'
     },
     {
       icon: Lock,
-      title: 'Segurança Armada e Desarmada',
-      description: 'Agentes habilitados e licenciados pelas autoridades competentes para atuar com armamento regulamentado ou defesa tática desarmada.',
-      highlight: 'Porte Homologado'
+      title: language === 'pt' ? 'Segurança Armada e Desarmada' : 'Armed & Unarmed Guarding',
+      description: language === 'pt'
+        ? 'Agentes habilitados e licenciados pelas autoridades competentes para atuar com armamento regulamentado ou defesa tática desarmada.'
+        : 'Certified officers fully authorized by Mozambican police authorities for lethal weapons custody or unarmed corporate access control.',
+      highlight: language === 'pt' ? 'Porte Homologado' : 'Licensed Arms'
     },
     {
       icon: FileCheck2,
-      title: 'Conformidade Legal & Fiscal',
-      description: 'Sociedade formal com Conservatória nº 100709287 e NUIT 400724423. Contratos transparentes e seguros de responsabilidade operacional.',
-      highlight: '100% Legalizado'
+      title: language === 'pt' ? 'Conformidade Legal & Fiscal' : 'Legal & Corporate Compliance',
+      description: language === 'pt'
+        ? 'Sociedade formal com Conservatória nº 100709287 e NUIT 400724423. Contratos transparentes e seguros de responsabilidade operacional.'
+        : 'Fully incorporated enterprise under Registry No. 100709287 and Tax ID NUIT 400724423 with comprehensive third-party liability insurance.',
+      highlight: language === 'pt' ? '100% Legalizado' : 'Fully Certified'
     },
     {
       icon: Clock,
-      title: 'Plantão de Comando Permanente',
-      description: 'Comunicação contínua via rádio VHF/UHF criptografado e central telefônica direta para atendimento de ocorrências a qualquer hora do dia ou da noite.',
-      highlight: 'Atendimento 24/7/365'
+      title: language === 'pt' ? 'Plantão de Comando Permanente' : 'Permanent Command Desk',
+      description: language === 'pt'
+        ? 'Comunicação contínua via rádio VHF/UHF criptografado e central telefônica direta para atendimento de ocorrências a qualquer hora do dia ou da noite.'
+        : 'Encrypted VHF/UHF digital radio channels and direct dispatch helpline handling security incidents round-the-clock without interruption.',
+      highlight: language === 'pt' ? 'Atendimento 24/7/365' : '24/7/365 Ops'
     },
   ];
 
@@ -48,13 +65,20 @@ export default function WhyChooseUs() {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-blue-100/70 border border-blue-200 text-xs font-bold text-shield-blue uppercase tracking-wider">
-            <span>Diferenciais Competitivos</span>
+            <span>{t('whyChooseUs.badge')}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Por Que Escolher a <span className="text-shield-blue">DC SECURE GROUP</span>?
+            {language === 'pt' ? (
+              <>Por Que Escolher a <span className="text-shield-blue">DC SECURE GROUP</span>?</>
+            ) : (
+              <>Why Choose <span className="text-shield-blue">DC SECURE GROUP</span>?</>
+            )}
           </h2>
           <p className="text-base sm:text-lg text-slate-600">
-            Muito mais do que vigilância tradicional, oferecemos um ecossistema integrado de inteligência preventiva, proteção armada e tecnologia de ponta.
+            {language === 'pt'
+              ? 'Muito mais do que vigilância tradicional, oferecemos um ecossistema integrado de inteligência preventiva, proteção armada e tecnologia de ponta.'
+              : 'Far beyond traditional security guarding, we provide an integrated ecosystem of preventive intelligence, armed protection, and tactical tech.'
+            }
           </p>
         </div>
 
@@ -88,7 +112,7 @@ export default function WhyChooseUs() {
 
                 <div className="pt-4 mt-4 border-t border-slate-100 flex items-center text-xs text-slate-500 font-medium group-hover:text-slate-700 transition-colors">
                   <ShieldCheck className="w-4 h-4 text-emerald-600 mr-2 flex-shrink-0" />
-                  <span>Padrão de Qualidade Certificado</span>
+                  <span>{language === 'pt' ? 'Padrão de Qualidade Certificado' : 'Certified Quality Benchmark'}</span>
                 </div>
               </div>
             );

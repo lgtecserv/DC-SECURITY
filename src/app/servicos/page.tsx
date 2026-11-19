@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -6,13 +8,11 @@ import FloatingWidgets from '@/components/FloatingWidgets';
 import ServicesSection from '@/components/ServicesSection';
 import FeaturedSolutions from '@/components/FeaturedSolutions';
 import QuoteSimulator from '@/components/QuoteSimulator';
-
-export const metadata = {
-  title: 'Serviços & Soluções | DC SECURE GROUP',
-  description: 'Conheça todos os serviços de segurança da DC SECURE GROUP: vigilância armada, transporte de valores, proteção VIP, CCTV e rastreio satélite.',
-};
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export default function ServicosPage() {
+  const { t, language } = useLanguage();
+
   return (
     <>
       <Navbar />
@@ -21,14 +21,14 @@ export default function ServicosPage() {
         {/* Expansive Hero Section with HD Video */}
         <Hero
           isSubpage={true}
-          badge="OBJECTO SOCIAL HOMOLOGADO"
-          pageTitle="Serviços & Soluções"
-          pageSubtitle="Soluções integradas e regulamentadas para defesa patrimonial, logística blindada e proteção pessoal em Moçambique."
+          badge={t('servicosPage.badge')}
+          pageTitle={t('servicosPage.title')}
+          pageSubtitle={t('servicosPage.subtitle')}
           breadcrumbs={[
-            { label: 'Home', href: '/' },
-            { label: 'Serviços & Soluções' }
+            { label: t('servicosPage.breadcrumbHome'), href: '/' },
+            { label: t('servicosPage.breadcrumbServices') }
           ]}
-          ctaText="Ver Catálogo"
+          ctaText={t('servicosPage.ctaHero')}
           ctaLink="#servicos"
         />
 

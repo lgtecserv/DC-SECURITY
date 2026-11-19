@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import ScrollToTopOnNavigate from '@/components/ScrollToTopOnNavigate';
+import { LanguageProvider } from '@/i18n/LanguageContext';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://dcsecuregroup.co.mz'),
@@ -43,8 +44,10 @@ export default function RootLayout({
   return (
     <html lang="pt-MZ" className="scroll-smooth">
       <body className="min-h-screen flex flex-col bg-white text-slate-800 antialiased selection:bg-shield-blue selection:text-white">
-        <ScrollToTopOnNavigate />
-        {children}
+        <LanguageProvider>
+          <ScrollToTopOnNavigate />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

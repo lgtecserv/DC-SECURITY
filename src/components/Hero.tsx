@@ -6,8 +6,8 @@ import {
   ChevronLeft,
   ChevronRight,
   ArrowRight,
-  Shield
 } from 'lucide-react';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 interface HeroProps {
   isSubpage?: boolean;
@@ -25,9 +25,10 @@ export default function Hero({
   pageSubtitle,
   badge,
   breadcrumbs,
-  ctaText = 'Saber mais',
+  ctaText,
   ctaLink = '#sobre'
 }: HeroProps) {
+  const { t, language } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [scrollY, setScrollY] = useState(0);
@@ -36,35 +37,30 @@ export default function Hero({
   const homeSlides = [
     {
       id: 1,
-      badge: 'DC SECURE GROUP • MOÇAMBIQUE',
-      headline: 'Protegemos O Que Mais Importa.',
-      description: 'Serviços de segurança privada personalizados para empresas e residências em Moçambique com equipas homologadas de prontidão imediata.',
-      ctaText: 'Saber mais',
+      badge: t('hero.badge'),
+      headline: t('hero.slide1.title'),
+      description: t('hero.slide1.subtitle'),
+      ctaText: t('hero.slide1.ctaPrimary'),
       ctaLink: '/quem-somos',
+      secondaryCta: t('hero.slide1.ctaSecondary'),
     },
     {
       id: 2,
-      badge: 'VIGILÂNCIA PATRIMONIAL',
-      headline: 'Rigor e Defesa de Perímetro',
-      description: 'Vigilância ostensiva e controlo de acessos 24 horas por dia com agentes rigorosamente instruídos e fiscalizados.',
-      ctaText: 'Nossos Serviços',
+      badge: language === 'pt' ? 'TECNOLOGIA TÁTICA' : 'TACTICAL TECHNOLOGY',
+      headline: t('hero.slide2.title'),
+      description: t('hero.slide2.subtitle'),
+      ctaText: t('hero.slide2.ctaPrimary'),
       ctaLink: '/servicos',
+      secondaryCta: t('hero.slide2.ctaSecondary'),
     },
     {
       id: 3,
-      badge: 'TRANSPORTE DE VALORES',
-      headline: 'Custódia e Logística Blindada',
-      description: 'Transporte de numerário e ativos estratégicos em viaturas blindadas com escolta armada certificada e rastreio via satélite.',
-      ctaText: 'Pedir Cotação',
-      ctaLink: '/contactos',
-    },
-    {
-      id: 4,
-      badge: 'PROTEÇÃO VIP & CPO',
-      headline: 'Segurança Pessoal Executiva',
-      description: 'Oficiais de proteção aproximada para diplomatas, empresários e investidores internacionais em todo o território nacional.',
-      ctaText: 'Falar Connosco',
-      ctaLink: '/contactos',
+      badge: language === 'pt' ? 'CUSTÓDIA E ESCOLTA' : 'ESCORT & CUSTODY',
+      headline: t('hero.slide3.title'),
+      description: t('hero.slide3.subtitle'),
+      ctaText: t('hero.slide3.ctaPrimary'),
+      ctaLink: '/quem-somos',
+      secondaryCta: t('hero.slide3.ctaSecondary'),
     },
   ];
 
@@ -135,7 +131,6 @@ export default function Hero({
     >
       {/* 
         LAYER 0: AMPLO VÍDEO DE FUNDO EM ALTA DEFINIÇÃO (EXTRA LONGO & EXPANSIVO)
-        Preenche toda a área ampla do Hero estendida para baixo com headroom de parallax
       */}
       <div 
         className="absolute inset-0 w-full h-[135%] -top-[15%] overflow-hidden z-0 pointer-events-none"
@@ -169,7 +164,6 @@ export default function Hero({
 
       {/* 
         LAYER 1: MÁSCARA LEVE E NÍTIDA
-        Preserva máxima nitidez e claridade do vídeo enquanto garante contraste ideal nos textos
       */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent z-10 pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/15 z-10 pointer-events-none" />
@@ -223,14 +217,14 @@ export default function Hero({
                 href={ctaLink}
                 className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#C35614] hover:bg-[#A7450D] text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-2xl transition-all duration-300 active:scale-95 group"
               >
-                <span>{ctaText}</span>
+                <span>{ctaText || t('quemSomosPage.heroCta')}</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/contactos"
                 className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-bold text-xs sm:text-sm uppercase tracking-wider border border-white/30 shadow-2xl transition-all duration-300 active:scale-95"
               >
-                <span>Fale Connosco</span>
+                <span>{t('hero.slide1.ctaSecondary')}</span>
               </Link>
             </div>
           </div>
@@ -268,7 +262,7 @@ export default function Hero({
                 href="/contactos"
                 className="inline-flex items-center justify-center px-7 sm:px-8 py-3.5 sm:py-4 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-bold text-xs sm:text-sm uppercase tracking-wider border border-white/30 shadow-2xl transition-all duration-300 active:scale-95"
               >
-                <span>Fale Connosco</span>
+                <span>{active.secondaryCta}</span>
               </Link>
             </div>
 
@@ -300,7 +294,7 @@ export default function Hero({
         <>
           <button
             onClick={prevSlide}
-            aria-label="Slide Anterior"
+            aria-label={language === 'pt' ? 'Slide Anterior' : 'Previous Slide'}
             className="absolute left-3 sm:left-8 top-[38%] sm:top-[42%] -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#C35614] hover:bg-[#A7450D] text-white flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 shadow-2xl z-30 border border-white/20"
           >
             <ChevronLeft className="w-6 h-6 stroke-[2.5]" />
@@ -308,7 +302,7 @@ export default function Hero({
 
           <button
             onClick={nextSlide}
-            aria-label="Próximo Slide"
+            aria-label={language === 'pt' ? 'Próximo Slide' : 'Next Slide'}
             className="absolute right-3 sm:right-8 top-[38%] sm:top-[42%] -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#C35614] hover:bg-[#A7450D] text-white flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 shadow-2xl z-30 border border-white/20"
           >
             <ChevronRight className="w-6 h-6 stroke-[2.5]" />
@@ -317,7 +311,7 @@ export default function Hero({
           {/* Indicador de rolagem elegante no fundo do Hero longo */}
           <div className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2 z-30 pointer-events-none opacity-85">
             <span className="text-[11px] font-semibold text-white/90 uppercase tracking-widest drop-shadow-md">
-              Role para explorar
+              {language === 'pt' ? 'Role para explorar' : 'Scroll to explore'}
             </span>
             <div className="w-5 h-8 rounded-full border-2 border-white/60 flex items-start justify-center p-1">
               <div className="w-1.5 h-2 rounded-full bg-[#C35614] animate-bounce" />

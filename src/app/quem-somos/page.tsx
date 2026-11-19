@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -12,53 +14,49 @@ import {
   Eye, 
   Award, 
   ShieldCheck, 
-  CheckCircle2, 
   Clock, 
   Users, 
-  MapPin, 
   Lock, 
   Activity, 
   ArrowRight, 
   FileCheck2,
   Phone
 } from 'lucide-react';
-
-export const metadata = {
-  title: 'Quem Somos | DC SECURE GROUP - Segurança Privada em Moçambique',
-  description: 'Conheça a história, compromisso ético e capacidade operacional da DC SECURE GROUP, Lda. Especialistas em vigilância patrimonial, proteção VIP e logística de valores em Moçambique.',
-};
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export default function QuemSomosPage() {
+  const { t, language } = useLanguage();
+
   const differentiators = [
     {
       icon: ShieldCheck,
-      title: 'Homologação e Conformidade Legal',
-      description: 'Empresa 100% legalizada perante as autoridades moçambicanas, registada sob Conservatória nº 100709287 e NUIT 400724423.',
+      title: t('quemSomosPage.pillar1Title'),
+      description: t('quemSomosPage.pillar1Desc'),
     },
     {
       icon: Clock,
-      title: 'Central Operacional 24/7/365',
-      description: 'Centro de comando permanente com despacho imediato de viaturas táticas e agentes armados para pronta intervenção.',
+      title: t('quemSomosPage.pillar2Title'),
+      description: t('quemSomosPage.pillar2Desc'),
     },
     {
       icon: Users,
-      title: 'Recrutamento & Formação Militarizada',
-      description: 'Processo de triagem minucioso, verificação de antecedentes criminais e treino físico e tático contínuo para cada guarda.',
+      title: t('quemSomosPage.pillar3Title'),
+      description: t('quemSomosPage.pillar3Desc'),
     },
     {
       icon: Lock,
-      title: 'Seguro de Responsabilidade Civil',
-      description: 'Apólice de seguro abrangente para proteger totalmente as operações patrimoniais e o transporte de fundos em trânsito.',
+      title: t('quemSomosPage.pillar4Title'),
+      description: t('quemSomosPage.pillar4Desc'),
     },
     {
       icon: Activity,
-      title: 'Tecnologia & Rastreio Via Satélite',
-      description: 'Sistemas avançados de telemetria e posicionamento global em tempo real para frotas blindadas e patrulhas de ronda.',
+      title: t('quemSomosPage.pillar5Title'),
+      description: t('quemSomosPage.pillar5Desc'),
     },
     {
       icon: FileCheck2,
-      title: 'Supervisão & Fiscalização Noturna',
-      description: 'Oficiais inspetores realizam rondas aleatórias diurnas e noturnas para garantir 100% de vigília ativa nos postos dos clientes.',
+      title: t('quemSomosPage.pillar6Title'),
+      description: t('quemSomosPage.pillar6Desc'),
     },
   ];
 
@@ -70,14 +68,14 @@ export default function QuemSomosPage() {
         {/* Expansive Hero Section with HD Video */}
         <Hero
           isSubpage={true}
-          badge="INSTITUCIONAL • DC SECURE GROUP"
-          pageTitle="Quem Somos"
-          pageSubtitle="A tranquilidade que você merece, com a confiança que você precisa em Moçambique."
+          badge={t('quemSomosPage.badge')}
+          pageTitle={t('quemSomosPage.title')}
+          pageSubtitle={t('quemSomosPage.subtitle')}
           breadcrumbs={[
-            { label: 'Home', href: '/' },
-            { label: 'Quem Somos' }
+            { label: t('quemSomosPage.heroBreadcrumbHome'), href: '/' },
+            { label: t('quemSomosPage.heroBreadcrumbAbout') }
           ]}
-          ctaText="Falar Connosco"
+          ctaText={t('quemSomosPage.heroCta')}
           ctaLink="/contactos"
         />
 
@@ -93,7 +91,7 @@ export default function QuemSomosPage() {
                     <div className="aspect-[4/3] relative">
                       <Image 
                         src="/images/headquarters.jpg?v=2"
-                        alt="Sede Operacional da DC SECURE GROUP em Boane Matola Rio"
+                        alt={language === 'pt' ? 'Sede Operacional da DC SECURE GROUP em Boane Matola Rio' : 'DC SECURE GROUP Operational Headquarters in Boane Matola Rio'}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-700"
                         sizes="(max-width: 1024px) 100vw, 40vw"
@@ -102,8 +100,8 @@ export default function QuemSomosPage() {
                     </div>
                     <div className="p-5 bg-[#102147] text-white flex items-center justify-between">
                       <div>
-                        <p className="text-xs font-bold text-orange-400">Sede Própria Operacional</p>
-                        <p className="text-sm font-semibold">Boane, Matola Rio • DUAT 32</p>
+                        <p className="text-xs font-bold text-orange-400">{t('about.badgeHQ')}</p>
+                        <p className="text-sm font-semibold">{t('about.locationHQ')}</p>
                       </div>
                       <span className="w-3 h-3 rounded-full bg-emerald-400 animate-pulse" />
                     </div>
@@ -115,30 +113,30 @@ export default function QuemSomosPage() {
               <div className="lg:col-span-7 space-y-6">
                 <ScrollReveal animation="fade-left">
                   <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-orange-100 border border-orange-200 text-xs font-bold text-[#C35614] uppercase tracking-wider">
-                    <span>Compromisso Moçambicano</span>
+                    <span>{language === 'pt' ? 'Compromisso Moçambicano' : 'Mozambican Commitment'}</span>
                   </div>
 
                   <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#102147] tracking-tight leading-tight">
-                    Segurança de Alto Padrão Adaptada à Realidade Nacional
+                    {t('quemSomosPage.historyTitle')}
                   </h2>
 
                   <div className="border-l-4 border-[#C35614] pl-4 text-slate-700 text-sm sm:text-base leading-relaxed space-y-3">
                     <p>
-                      A <strong>DC SECURE GROUP, Lda</strong> nasceu com a missão de redefinir os parâmetros de proteção patrimonial, escolta armada e transporte de valores em Moçambique. Combinamos disciplina militar, atendimento humanizado e soluções tecnológicas integradas.
+                      {t('quemSomosPage.historyP1')}
                     </p>
                     <p>
-                      Sediada estrategicamente em Boane, Matola Rio, com acesso privilegiado ao Corredor de Maputo e à EN4, a empresa mantém prontidão tática em toda a província de Maputo e operações em território nacional.
+                      {t('quemSomosPage.historyP2')}
                     </p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3">
                     <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-                      <span className="text-xs text-slate-500 block">Conservatória das Entidades:</span>
-                      <strong className="text-sm text-[#102147]">Nº 100709287</strong>
+                      <span className="text-xs text-slate-500 block">{t('quemSomosPage.legalRegistry')}</span>
+                      <strong className="text-sm text-[#102147]">{t('quemSomosPage.legalRegistryVal')}</strong>
                     </div>
                     <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-                      <span className="text-xs text-slate-500 block">Identificação Fiscal (NUIT):</span>
-                      <strong className="text-sm text-[#102147]">400724423</strong>
+                      <span className="text-xs text-slate-500 block">{t('quemSomosPage.nuitLabel')}</span>
+                      <strong className="text-sm text-[#102147]">{t('quemSomosPage.nuitVal')}</strong>
                     </div>
                   </div>
 
@@ -147,7 +145,7 @@ export default function QuemSomosPage() {
                       href="/contactos"
                       className="inline-flex items-center px-8 py-3.5 rounded-full bg-[#C35614] hover:bg-[#A7450D] text-white font-bold text-sm tracking-wide shadow-md transition-all active:scale-95 group"
                     >
-                      <span>Fale com a Nossa Equipa</span>
+                      <span>{t('quemSomosPage.ctaTalkTeam')}</span>
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Link>
 
@@ -155,7 +153,7 @@ export default function QuemSomosPage() {
                       href="/servicos"
                       className="inline-flex items-center px-7 py-3.5 rounded-full bg-slate-100 hover:bg-slate-200 text-[#102147] font-bold text-sm tracking-wide transition-all"
                     >
-                      <span>Catálogo de Serviços</span>
+                      <span>{t('quemSomosPage.ctaCatalog')}</span>
                     </Link>
                   </div>
                 </ScrollReveal>
@@ -176,7 +174,7 @@ export default function QuemSomosPage() {
                     <AnimatedCounter end={5000} suffix="+" />
                   </div>
                   <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-300">
-                    Protecções Confiáveis
+                    {language === 'pt' ? 'Protecções Confiáveis' : 'Secured Sites'}
                   </p>
                 </div>
               </ScrollReveal>
@@ -187,7 +185,7 @@ export default function QuemSomosPage() {
                     <AnimatedCounter end={5} suffix="+" />
                   </div>
                   <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-300">
-                    Anos de Experiência
+                    {language === 'pt' ? 'Anos de Experiência' : 'Years Experience'}
                   </p>
                 </div>
               </ScrollReveal>
@@ -198,7 +196,7 @@ export default function QuemSomosPage() {
                     <AnimatedCounter end={150} suffix="+" />
                   </div>
                   <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-300">
-                    Especialistas Homologados
+                    {language === 'pt' ? 'Especialistas Homologados' : 'Certified Guards'}
                   </p>
                 </div>
               </ScrollReveal>
@@ -209,7 +207,7 @@ export default function QuemSomosPage() {
                     <AnimatedCounter end={100} suffix="%" />
                   </div>
                   <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-300">
-                    Conformidade Legal
+                    {language === 'pt' ? 'Conformidade Legal' : 'Legal Compliance'}
                   </p>
                 </div>
               </ScrollReveal>
@@ -225,13 +223,16 @@ export default function QuemSomosPage() {
             <ScrollReveal animation="fade-up">
               <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
                 <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-blue-100 border border-blue-200 text-xs font-bold text-[#102147] uppercase tracking-wider">
-                  <span>Diretrizes Estratégicas</span>
+                  <span>{language === 'pt' ? 'Diretrizes Estratégicas' : 'Strategic Guidelines'}</span>
                 </div>
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-[#102147] tracking-tight">
-                  Nossos Pilares Fundamentais
+                  {language === 'pt' ? 'Nossos Pilares Fundamentais' : 'Our Fundamental Pillars'}
                 </h2>
                 <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                  Princípios éticos e rigor operacional que norteiam cada missão da DC SECURE GROUP em prol de famílias, empresas e instituições.
+                  {language === 'pt'
+                    ? 'Princípios éticos e rigor operacional que norteiam cada missão da DC SECURE GROUP em prol de famílias, empresas e instituições.'
+                    : 'Ethical tenets and tactical rigor guiding every mission executed by DC SECURE GROUP across Mozambique.'
+                  }
                 </p>
               </div>
             </ScrollReveal>
@@ -245,13 +246,13 @@ export default function QuemSomosPage() {
                     <div className="w-14 h-14 rounded-2xl bg-orange-100 flex items-center justify-center text-[#C35614] mb-6 shadow-inner">
                       <Target className="w-7 h-7" />
                     </div>
-                    <h3 className="text-2xl font-bold text-[#102147] mb-3">Nossa Missão</h3>
+                    <h3 className="text-2xl font-bold text-[#102147] mb-3">{t('quemSomosPage.missionTitle')}</h3>
                     <p className="text-slate-600 text-sm leading-relaxed">
-                      Proporcionar segurança de alto padrão, protegendo vidas, bens patrimoniais e valores através de estratégias preventivas rigorosas, tecnologia de ponta e pessoal altamente capacitado e fiscalizado.
+                      {t('quemSomosPage.missionDesc')}
                     </p>
                   </div>
                   <div className="pt-6 mt-6 border-t border-slate-100 flex items-center text-xs font-bold text-[#C35614]">
-                    <span>Compromisso diário de proteção</span>
+                    <span>{language === 'pt' ? 'Compromisso diário de proteção' : 'Daily commitment to protection'}</span>
                   </div>
                 </div>
               </ScrollReveal>
@@ -263,13 +264,13 @@ export default function QuemSomosPage() {
                     <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center text-[#102147] mb-6 shadow-inner">
                       <Eye className="w-7 h-7" />
                     </div>
-                    <h3 className="text-2xl font-bold text-[#102147] mb-3">Nossa Visão</h3>
+                    <h3 className="text-2xl font-bold text-[#102147] mb-3">{t('quemSomosPage.visionTitle')}</h3>
                     <p className="text-slate-600 text-sm leading-relaxed">
-                      Ser reconhecida como a referência máxima de segurança privada em Moçambique, destacando-se pela prontidão operacional tática, atendimento transparente e soluções customizadas a qualquer escala de desafio.
+                      {t('quemSomosPage.visionDesc')}
                     </p>
                   </div>
                   <div className="pt-6 mt-6 border-t border-slate-100 flex items-center text-xs font-bold text-[#102147]">
-                    <span>Liderança e excelência contínua</span>
+                    <span>{language === 'pt' ? 'Liderança e excelência contínua' : 'Leadership & continuous excellence'}</span>
                   </div>
                 </div>
               </ScrollReveal>
@@ -281,13 +282,13 @@ export default function QuemSomosPage() {
                     <div className="w-14 h-14 rounded-2xl bg-orange-100 flex items-center justify-center text-[#C35614] mb-6 shadow-inner">
                       <Award className="w-7 h-7" />
                     </div>
-                    <h3 className="text-2xl font-bold text-[#102147] mb-3">Nossos Valores</h3>
+                    <h3 className="text-2xl font-bold text-[#102147] mb-3">{t('quemSomosPage.valuesTitle')}</h3>
                     <p className="text-slate-600 text-sm leading-relaxed">
-                      Integridade inegociável, disciplina tática, legalidade estrita, lealdade aos clientes, respeito aos direitos humanos e agilidade absoluta em situações de crise ou contingência operacional.
+                      {t('quemSomosPage.valuesDesc')}
                     </p>
                   </div>
                   <div className="pt-6 mt-6 border-t border-slate-100 flex items-center text-xs font-bold text-[#C35614]">
-                    <span>Ética e disciplina inabaláveis</span>
+                    <span>{language === 'pt' ? 'Ética e disciplina inabaláveis' : 'Unshakable ethics & discipline'}</span>
                   </div>
                 </div>
               </ScrollReveal>
@@ -303,13 +304,16 @@ export default function QuemSomosPage() {
             <ScrollReveal animation="fade-up">
               <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
                 <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-orange-100 border border-orange-200 text-xs font-bold text-[#C35614] uppercase tracking-wider">
-                  <span>Por que escolher a DC</span>
+                  <span>{language === 'pt' ? 'Por que escolher a DC' : 'Why Choose DC'}</span>
                 </div>
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-[#102147] tracking-tight">
-                  Diferenciais que Asseguram a Sua Confiança
+                  {t('quemSomosPage.pillarsTitle')}
                 </h2>
                 <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                  Não entregamos apenas vigilância; fornecemos uma arquitetura completa de defesa e prevenção com supervisão ininterrupta.
+                  {language === 'pt'
+                    ? 'Não entregamos apenas vigilância; fornecemos uma arquitetura completa de defesa e prevenção com supervisão ininterrupta.'
+                    : 'We deliver far more than traditional guarding: a complete physical defense architecture with 24/7 active oversight.'
+                  }
                 </p>
               </div>
             </ScrollReveal>
@@ -348,14 +352,16 @@ export default function QuemSomosPage() {
                 <div className="relative rounded-2xl overflow-hidden aspect-[16/10] shadow-md group">
                   <Image 
                     src="/images/team-guard-1.jpg" 
-                    alt="Equipa tática de guarda e patrulha" 
+                    alt={language === 'pt' ? 'Equipa tática de guarda e patrulha' : 'Tactical patrol and guard squad'} 
                     fill 
                     className="object-cover group-hover:scale-105 transition-transform duration-500" 
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-5 flex flex-col justify-end text-white">
-                    <span className="text-[11px] font-bold text-orange-400 uppercase">Operações de Campo</span>
-                    <h4 className="text-base font-bold">Vigilância Armada e Desarmada</h4>
+                    <span className="text-[11px] font-bold text-orange-400 uppercase">
+                      {language === 'pt' ? 'Operações de Campo' : 'Field Operations'}
+                    </span>
+                    <h4 className="text-base font-bold">{t('servicesList.vigilancia.name')}</h4>
                   </div>
                 </div>
               </ScrollReveal>
@@ -364,14 +370,16 @@ export default function QuemSomosPage() {
                 <div className="relative rounded-2xl overflow-hidden aspect-[16/10] shadow-md group">
                   <Image 
                     src="/images/team-guard-3.jpg" 
-                    alt="Transporte de valores blindado" 
+                    alt={language === 'pt' ? 'Transporte de valores blindado' : 'Armored cash-in-transit'} 
                     fill 
                     className="object-cover group-hover:scale-105 transition-transform duration-500" 
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-5 flex flex-col justify-end text-white">
-                    <span className="text-[11px] font-bold text-orange-400 uppercase">Logística Estratégica</span>
-                    <h4 className="text-base font-bold">Transporte e Custódia de Fundos</h4>
+                    <span className="text-[11px] font-bold text-orange-400 uppercase">
+                      {language === 'pt' ? 'Logística Estratégica' : 'Strategic Logistics'}
+                    </span>
+                    <h4 className="text-base font-bold">{t('servicesList.valores.name')}</h4>
                   </div>
                 </div>
               </ScrollReveal>
@@ -380,14 +388,16 @@ export default function QuemSomosPage() {
                 <div className="relative rounded-2xl overflow-hidden aspect-[16/10] shadow-md group">
                   <Image 
                     src="/images/vip-protection.jpg" 
-                    alt="Proteção de altas individualidades" 
+                    alt={language === 'pt' ? 'Proteção de altas individualidades' : 'Executive close protection'} 
                     fill 
                     className="object-cover group-hover:scale-105 transition-transform duration-500" 
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-5 flex flex-col justify-end text-white">
-                    <span className="text-[11px] font-bold text-orange-400 uppercase">Segurança Executiva</span>
-                    <h4 className="text-base font-bold">Guarda-Costas & Proteção VIP</h4>
+                    <span className="text-[11px] font-bold text-orange-400 uppercase">
+                      {language === 'pt' ? 'Segurança Executiva' : 'Executive Security'}
+                    </span>
+                    <h4 className="text-base font-bold">{t('servicesList.vip.name')}</h4>
                   </div>
                 </div>
               </ScrollReveal>
@@ -402,15 +412,21 @@ export default function QuemSomosPage() {
             
             <ScrollReveal animation="zoom-in">
               <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-orange-300 font-bold text-xs uppercase tracking-widest border border-white/20 mb-2">
-                Prontidão Imediata em Moçambique
+                {language === 'pt' ? 'Prontidão Imediata em Moçambique' : 'Immediate Readiness in Mozambique'}
               </span>
 
               <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-                Proteja o Seu Património com Quem Cumpre os Mais Altos Padrões
+                {language === 'pt' 
+                  ? 'Proteja o Seu Património com Quem Cumpre os Mais Altos Padrões'
+                  : 'Safeguard Your Assets with Leaders in Physical Security'
+                }
               </h2>
 
               <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed pt-2">
-                Fale agora com a nossa direção de operações e receba uma avaliação de risco personalizada sem compromisso para a sua empresa ou residência.
+                {language === 'pt'
+                  ? 'Fale agora com a nossa direção de operações e receba uma avaliação de risco personalizada sem compromisso para a sua empresa ou residência.'
+                  : 'Speak directly with our operations management to receive a complimentary custom risk assessment for your business or residence.'
+                }
               </p>
 
               <div className="pt-8 flex flex-wrap justify-center gap-4">
@@ -418,18 +434,18 @@ export default function QuemSomosPage() {
                   href="/contactos"
                   className="inline-flex items-center px-9 py-4 rounded-full bg-[#C35614] hover:bg-[#A7450D] text-white font-bold text-sm uppercase tracking-wider shadow-2xl transition-all active:scale-95 group"
                 >
-                  <span>Pedir Proposta Oficial</span>
+                  <span>{language === 'pt' ? 'Pedir Proposta Oficial' : 'Request Official Proposal'}</span>
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
 
                 <a
-                  href="https://wa.me/258845393269?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20uma%20reuni%C3%A3o%20com%20a%20DC%20SECURE%20GROUP."
+                  href={`https://wa.me/258845393269?text=${encodeURIComponent(language === 'pt' ? 'Olá, gostaria de solicitar uma reunião com a DC SECURE GROUP.' : 'Hello, I would like to schedule a security consultation with DC SECURE GROUP.')}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-8 py-4 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-md text-white font-bold text-sm uppercase tracking-wider border border-white/30 transition-all active:scale-95"
                 >
                   <Phone className="w-4 h-4 mr-2 text-emerald-400" />
-                  <span>Falar no WhatsApp</span>
+                  <span>{language === 'pt' ? 'Falar no WhatsApp' : 'Chat on WhatsApp'}</span>
                 </a>
               </div>
             </ScrollReveal>

@@ -15,80 +15,99 @@ import {
   ArrowRight
 } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export default function ServicesSection() {
+  const { t, language } = useLanguage();
+
   const services = [
     {
       id: 'protecao-bens',
       icon: ShieldCheck,
       image: '/images/team-guard-1.jpg',
-      badge: 'Alínea a)',
-      title: 'Protecção e Segurança de Pessoas e Bens',
-      description: 'Patrulhamento preventivo, guarda de perímetro e defesa de património residencial, comercial e industrial com agentes táticos de alta prontidão.',
-      features: ['Postos fixos e móveis', 'Rondas programadas e aleatórias', 'Intervenção e contenção imediata'],
+      badge: t('servicesList.vigilancia.badge'),
+      title: t('servicesList.vigilancia.name'),
+      description: t('servicesList.vigilancia.shortDesc'),
+      features: language === 'pt' 
+        ? ['Postos fixos e móveis', 'Rondas programadas e aleatórias', 'Intervenção e contenção imediata']
+        : ['Static and mobile guard posts', 'Scheduled & random foot patrols', 'Immediate tactical containment'],
     },
     {
       id: 'vigilancia-acessos',
       icon: DoorClosed,
       image: '/images/team-guard-2.jpg',
-      badge: 'Alínea b)',
-      title: 'Vigilância e Controlo de Acessos',
-      description: 'Gestão minuciosa de fluxo de pessoas e viaturas em condomínios, instalações industriais, edifícios governamentais e áreas restritas.',
-      features: ['Registo informatizado de visitantes', 'Inspeção e triagem de bagagens', 'Barreiras físicas e torniquetes'],
+      badge: t('servicesList.acessos.badge'),
+      title: t('servicesList.acessos.name'),
+      description: t('servicesList.acessos.shortDesc'),
+      features: language === 'pt'
+        ? ['Registo informatizado de visitantes', 'Inspeção e triagem de bagagens', 'Barreiras físicas e torniquetes']
+        : ['Computerized visitor logs', 'Luggage and vehicle screening', 'Turnstiles & physical barriers'],
     },
     {
       id: 'transporte-valores',
       icon: Banknote,
       image: '/images/team-guard-3.jpg',
-      badge: 'Alínea c)',
-      title: 'Transporte de Fundos e Valores',
-      description: 'Logística segura de numerário, documentos confidenciais, joias e metais preciosos em viaturas blindadas com escolta armada especializada.',
-      features: ['Viaturas blindadas certificadas', 'Seguro integral de carga em trânsito', 'Rastreamento por satélite criptografado'],
+      badge: t('servicesList.valores.badge'),
+      title: t('servicesList.valores.name'),
+      description: t('servicesList.valores.shortDesc'),
+      features: language === 'pt'
+        ? ['Viaturas blindadas certificadas', 'Seguro integral de carga em trânsito', 'Rastreamento por satélite criptografado']
+        : ['Certified armored carrier fleet', 'Full in-transit cargo insurance', 'Encrypted satellite tracking'],
     },
     {
       id: 'guarda-costas',
       icon: UserCheck,
       image: '/images/vip-protection.jpg',
-      badge: 'Alínea d)',
-      title: 'Serviços de Guarda-Costas (Proteção VIP)',
-      description: 'Proteção executiva para diplomatas, empresários, celebridades e delegações internacionais com escolta pessoal discreta ou ostensiva.',
-      features: ['Agentes de Proteção Próxima (CPO)', 'Planeamento e reconhecimento de itinerários', 'Táticas defensivas e evasivas'],
+      badge: t('servicesList.vip.badge'),
+      title: t('servicesList.vip.name'),
+      description: t('servicesList.vip.shortDesc'),
+      features: language === 'pt'
+        ? ['Agentes de Proteção Próxima (CPO)', 'Planeamento e reconhecimento de itinerários', 'Táticas defensivas e evasivas']
+        : ['Close Protection Officers (CPO)', 'Route planning & reconnaissance', 'Defensive & evasive driving'],
     },
     {
       id: 'seguranca-eletronica',
       icon: Video,
       image: '/images/team-guard-4.jpg',
-      badge: 'Alínea e)',
-      title: 'Sistemas de Segurança Electrónica & CCTV',
-      description: 'Instalação, monitoramento central 24/7 e manutenção preventiva de câmaras de alta resolução, sensores de intrusão e cercas elétricas.',
-      features: ['CCTV IP com inteligência analítica', 'Centrais de alarme contra intrusão', 'Biometria e controlo facial'],
+      badge: t('servicesList.cctv.badge'),
+      title: t('servicesList.cctv.name'),
+      description: t('servicesList.cctv.shortDesc'),
+      features: language === 'pt'
+        ? ['CCTV IP com inteligência analítica', 'Centrais de alarme contra intrusão', 'Biometria e controlo facial']
+        : ['IP CCTV with AI video analytics', 'Intruder alarm monitoring', 'Biometric & facial recognition'],
     },
     {
       id: 'rastreio-satelite',
       icon: Satellite,
       image: '/images/patrol-fleet.jpg',
-      badge: 'Alínea f)',
-      title: 'Rastreio de Viaturas via Satélite',
-      description: 'Plataforma inteligente de GPS e telemetria para frotas de transporte, frotas pesadas, máquinas e viaturas ligeiras em tempo real.',
-      features: ['Corte remoto de ignição em emergências', 'Gestão de combustível e rotas', 'Botão de pânico e alertas por SMS/App'],
+      badge: t('servicesList.rastreio.badge'),
+      title: t('servicesList.rastreio.name'),
+      description: t('servicesList.rastreio.shortDesc'),
+      features: language === 'pt'
+        ? ['Corte remoto de ignição em emergências', 'Gestão de combustível e rotas', 'Botão de pânico e alertas por SMS/App']
+        : ['Remote ignition cut-off', 'Route & fuel management', 'Panic button & real-time alerts'],
     },
     {
       id: 'consultoria-treinamento',
       icon: GraduationCap,
       image: '/images/service-training.jpg',
-      badge: 'Alínea g)',
-      title: 'Formação & Treino Tático de Agentes',
-      description: 'Academia própria de instrução contínua, capacitação física, tiro defensivo homologado, legislação e protocolos de atendimento humanizado.',
-      features: ['Treinamento tático e defesa pessoal', 'Protocolos legais e primeiros socorros', 'Instrução contínua de conduta'],
+      badge: t('servicesList.treino.badge'),
+      title: t('servicesList.treino.name'),
+      description: t('servicesList.treino.shortDesc'),
+      features: language === 'pt'
+        ? ['Treinamento tático e defesa pessoal', 'Protocolos legais e primeiros socorros', 'Instrução contínua de conduta']
+        : ['Tactical drills & martial arts', 'Legal protocols & trauma first aid', 'Strict code of conduct training'],
     },
     {
       id: 'equipas-cinotecnicas',
       icon: Dog,
       image: '/images/headquarters.jpg?v=2',
-      badge: 'Alínea h)',
-      title: 'Equipas Cinotécnicas (Cães de Guarda K9)',
-      description: 'Patrulhas especializadas com binómios condutor-cão de guarda de raças nobres treinadas para deteção de intrusão e defesa de grandes perímetros.',
-      features: ['Cães de patrulha e busca treinados', 'Condutores certificados em cinotécnica', 'Eficácia máxima de dissuasão'],
+      badge: t('servicesList.k9.badge'),
+      title: t('servicesList.k9.name'),
+      description: t('servicesList.k9.shortDesc'),
+      features: language === 'pt'
+        ? ['Cães de patrulha e busca treinados', 'Condutores certificados em cinotécnica', 'Eficácia máxima de dissuasão']
+        : ['Trained patrol & detection dogs', 'Certified K9 dog handlers', 'Maximum perimeter deterrence'],
     },
   ];
 
@@ -100,18 +119,18 @@ export default function ServicesSection() {
         <ScrollReveal animation="fade-up">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-blue-100/70 border border-blue-200 text-xs font-bold text-shield-blue uppercase tracking-wider">
-              <span>Objecto Social Regulamentado</span>
+              <span>{t('servicesSection.badge')}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-              Nossos Serviços Oficiais de <span className="text-shield-blue">Segurança Privada</span>
+              {t('servicesSection.title')}
             </h2>
             <p className="text-base sm:text-lg text-slate-600">
-              Prestação de serviços licenciada em conformidade integral com a legislação moçambicana, cobrindo todo o espetro de proteção física, eletrónica e logística.
+              {t('servicesSection.subtitle')}
             </p>
           </div>
         </ScrollReveal>
 
-        {/* Services Grid with Crisp Photos & Staggered Scroll Animation */}
+        {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
           {services.map((service, index) => {
             const Icon = service.icon;
@@ -167,7 +186,7 @@ export default function ServicesSection() {
                       href="/contactos"
                       className="inline-flex items-center justify-between w-full pt-3 border-t border-slate-100 text-xs font-bold text-[#102147] hover:text-[#C35614] transition-colors group/link"
                     >
-                      <span>Pedir Proposta Detalhada</span>
+                      <span>{language === 'pt' ? 'Pedir Proposta Detalhada' : 'Request Detailed Proposal'}</span>
                       <ArrowRight className="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" />
                     </Link>
                   </div>
@@ -181,13 +200,17 @@ export default function ServicesSection() {
         <ScrollReveal animation="fade-up" delay={200}>
           <div className="mt-12 p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm flex flex-col sm:flex-row items-center justify-between text-xs text-slate-600 gap-3">
             <p>
-              Todos os serviços são prestados em estrita conformidade com o <strong className="text-slate-900">Decreto de Regulamentação da Segurança Privada em Moçambique</strong> e alvarás vigentes.
+              {language === 'pt' ? (
+                <>Todos os serviços são prestados em estrita conformidade com o <strong className="text-slate-900">Decreto de Regulamentação da Segurança Privada em Moçambique</strong> e alvarás vigentes.</>
+              ) : (
+                <>All services are executed in strict compliance with the <strong className="text-slate-900">Private Security Regulation Decree of Mozambique</strong> and active licenses.</>
+              )}
             </p>
             <Link 
               href="/contactos" 
               className="text-[#C35614] hover:text-[#A7450D] font-bold whitespace-nowrap inline-flex items-center space-x-1"
             >
-              <span>Falar com a Direção Operacional</span>
+              <span>{language === 'pt' ? 'Falar com a Direção Operacional' : 'Speak with Operations Management'}</span>
               <ArrowRight className="w-3.5 h-3.5 ml-1" />
             </Link>
           </div>

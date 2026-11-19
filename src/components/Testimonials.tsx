@@ -4,30 +4,40 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export default function Testimonials() {
+  const { t, language } = useLanguage();
   const [activeSlide, setActiveSlide] = useState(0);
 
   const testimonials = [
     {
-      text: 'O atendimento é impecável e os vigilantes são sempre atentos e educados. Os moradores se sentem muito mais seguros desde que contratamos a DC SECURE GROUP para o nosso condomínio.',
+      text: language === 'pt' 
+        ? 'O atendimento é impecável e os vigilantes são sempre atentos e educados. Os moradores se sentem muito mais seguros desde que contratamos a DC SECURE GROUP para o nosso condomínio.'
+        : 'The customer service is impeccable, and the security officers are always courteous and observant. Our residents feel exponentially safer since we engaged DC SECURE GROUP for our community.',
       name: 'Sandra Comé',
-      role: 'Chefe de condomínio'
+      role: language === 'pt' ? 'Chefe de Condomínio Residencial' : 'Residential Condominium Board Head'
     },
     {
-      text: 'A equipa da DC SECURE GROUP trouxe tranquilidade para o nosso negócio. Hoje sabemos que nossos colaboradores, armazéns e instalações estão devidamente protegidos 24 horas por dia.',
+      text: language === 'pt'
+        ? 'A equipa da DC SECURE GROUP trouxe tranquilidade para o nosso negócio. Hoje sabemos que nossos colaboradores, armazéns e instalações estão devidamente protegidos 24 horas por dia.'
+        : 'The DC SECURE GROUP crew brought true peace of mind to our enterprise. We now know that our workforce, logistics warehouses, and facilities are protected around the clock.',
       name: 'João Neves',
-      role: 'Director de Operações'
+      role: language === 'pt' ? 'Director de Operações' : 'Chief Operating Officer'
     },
     {
-      text: 'A escolta de valores e o rastreamento via satélite nos proporcionaram um nível de segurança sem precedentes no Corredor de Maputo e ligações provinciais.',
+      text: language === 'pt'
+        ? 'A escolta de valores e o rastreamento via satélite nos proporcionaram um nível de segurança sem precedentes no Corredor de Maputo e ligações provinciais.'
+        : 'Their armored cash escort and satellite telematics have delivered an unprecedented tier of reliability across the Greater Maputo Corridor and provincial links.',
       name: 'Manuel Cossa',
-      role: 'Gestor de Logística'
+      role: language === 'pt' ? 'Gestor de Logística & Frotas' : 'Fleet & Logistics Manager'
     },
     {
-      text: 'A pronta resposta da central quando tivemos um alarme disparado no centro comercial foi inferior a 4 minutos. Agilidade e profissionalismo incomparáveis.',
+      text: language === 'pt'
+        ? 'A pronta resposta da central quando tivemos um alarme disparado no centro comercial foi inferior a 4 minutos. Agilidade e profissionalismo incomparáveis.'
+        : 'The rapid intervention squad response time when a perimeter sensor triggered was under 4 minutes. Outstanding tactical agility and professionalism.',
       name: 'Dr. Lucas Nhantumbo',
-      role: 'Administrador de Imóveis'
+      role: language === 'pt' ? 'Administrador de Imóveis' : 'Commercial Property Administrator'
     }
   ];
 
@@ -42,11 +52,18 @@ export default function Testimonials() {
           <div className="lg:col-span-5 space-y-5">
             <ScrollReveal animation="fade-right">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#102147] tracking-tight leading-snug">
-                A confiança dos nossos clientes é o nosso maior património
+                {language === 'pt' 
+                  ? 'A confiança dos nossos clientes é o nosso maior património'
+                  : 'Our clients trust is our greatest operational asset'
+                }
               </h2>
 
               <p className="text-sm text-slate-600 leading-relaxed mt-4">
-                Na <strong>DC SECURE GROUP, Lda</strong>, cada parceria é construída com dedicação, profissionalismo e resultados comprovados. Veja o que alguns dos nossos clientes têm a dizer sobre a experiência de contar com nossos serviços de segurança privada.
+                {language === 'pt' ? (
+                  <>Na <strong>DC SECURE GROUP, Lda</strong>, cada parceria é construída com dedicação, profissionalismo e resultados comprovados. Veja o que alguns dos nossos clientes têm a dizer sobre a experiência de contar com nossos serviços de segurança privada.</>
+                ) : (
+                  <>At <strong>DC SECURE GROUP, Lda</strong>, every client partnership is forged with discipline, confidentiality, and proven outcomes. Discover what corporate leaders have to say about our private security services.</>
+                )}
               </p>
 
               <div className="pt-6">
@@ -54,7 +71,7 @@ export default function Testimonials() {
                   href="/contactos"
                   className="inline-flex items-center space-x-2 px-8 py-3.5 rounded-full bg-[#C35614] hover:bg-[#A7450D] text-white font-bold text-sm tracking-wide shadow-md transition-all active:scale-95 group"
                 >
-                  <span>Agende uma Visita</span>
+                  <span>{language === 'pt' ? 'Agende uma Visita' : 'Schedule a Site Visit'}</span>
                   <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
@@ -93,21 +110,21 @@ export default function Testimonials() {
             <div className="flex items-center justify-center space-x-2.5 mt-8">
               <button
                 onClick={() => setActiveSlide(0)}
-                aria-label="Página 1"
+                aria-label={language === 'pt' ? 'Página 1' : 'Page 1'}
                 className={`h-2.5 rounded-full transition-all duration-300 ${activeSlide === 0 ? 'w-8 bg-[#C35614]' : 'w-2.5 bg-slate-300 hover:bg-slate-400'}`}
               />
               <button
                 onClick={() => setActiveSlide(1)}
-                aria-label="Página 2"
+                aria-label={language === 'pt' ? 'Página 2' : 'Page 2'}
                 className={`h-2.5 rounded-full transition-all duration-300 ${activeSlide === 1 ? 'w-8 bg-[#C35614]' : 'w-2.5 bg-slate-300 hover:bg-slate-400'}`}
               />
             </div>
-            </ScrollReveal>
-          </div>
-
+          </ScrollReveal>
         </div>
 
       </div>
-    </section>
+
+    </div>
+  </section>
   );
 }

@@ -4,8 +4,12 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ShieldAlert, Home, Phone, ArrowLeft } from 'lucide-react';
+import { useLanguage } from '@/i18n/LanguageContext';
+import LanguageSwitcher from '@/i18n/LanguageSwitcher';
 
 export default function NotFound() {
+  const { t, language } = useLanguage();
+
   return (
     <div className="min-h-screen bg-slate-900 text-white flex flex-col justify-between p-6">
       
@@ -20,13 +24,16 @@ export default function NotFound() {
             className="h-10 w-auto object-contain"
           />
         </Link>
-        <Link 
-          href="/" 
-          className="inline-flex items-center space-x-2 text-xs font-bold text-orange-400 hover:text-orange-300 transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Voltar ao Início</span>
-        </Link>
+        <div className="flex items-center space-x-3">
+          <LanguageSwitcher variant="compact" />
+          <Link 
+            href="/" 
+            className="inline-flex items-center space-x-2 text-xs font-bold text-orange-400 hover:text-orange-300 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>{t('notFound.btnHome')}</span>
+          </Link>
+        </div>
       </div>
 
       {/* Main 404 Message */}
@@ -37,15 +44,15 @@ export default function NotFound() {
 
         <div className="space-y-2">
           <span className="text-xs font-mono font-bold uppercase tracking-widest text-orange-400">
-            Erro 404 • Perímetro Não Localizado
+            {language === 'pt' ? 'Erro 404 • Perímetro Não Localizado' : 'Error 404 • Unlocated Perimeter'}
           </span>
           <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight">
-            Página Não Encontrada
+            {t('notFound.badge')}
           </h1>
         </div>
 
         <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-lg mx-auto">
-          O link que você seguiu pode ter sido alterado, removido ou o endereço foi digitado incorretamente.
+          {t('notFound.desc')}
         </p>
 
         <div className="pt-4 flex flex-wrap justify-center gap-4">
@@ -54,7 +61,7 @@ export default function NotFound() {
             className="inline-flex items-center space-x-2 px-8 py-3.5 rounded-full bg-[#C35614] hover:bg-[#A7450D] text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xl transition-all active:scale-95"
           >
             <Home className="w-4 h-4" />
-            <span>Página Inicial</span>
+            <span>{t('notFound.btnHome')}</span>
           </Link>
 
           <Link
@@ -62,23 +69,23 @@ export default function NotFound() {
             className="inline-flex items-center space-x-2 px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm uppercase tracking-wider border border-white/20 transition-all active:scale-95"
           >
             <Phone className="w-4 h-4" />
-            <span>Central de Atendimento</span>
+            <span>{t('notFound.btnContacts')}</span>
           </Link>
         </div>
 
         {/* Quick Route Links */}
         <div className="pt-8 border-t border-white/10 text-xs text-slate-400 flex flex-wrap justify-center gap-6">
-          <Link href="/quem-somos" className="hover:text-white transition-colors">Quem Somos</Link>
+          <Link href="/quem-somos" className="hover:text-white transition-colors">{t('nav.about')}</Link>
           <span>•</span>
-          <Link href="/servicos" className="hover:text-white transition-colors">Serviços & Soluções</Link>
+          <Link href="/servicos" className="hover:text-white transition-colors">{t('nav.services')}</Link>
           <span>•</span>
-          <Link href="/contactos" className="hover:text-white transition-colors">Fale Connosco</Link>
+          <Link href="/contactos" className="hover:text-white transition-colors">{t('nav.contacts')}</Link>
         </div>
       </div>
 
       {/* Footer */}
       <div className="max-w-7xl mx-auto w-full text-center py-4 text-xs text-slate-500">
-        <p>© {new Date().getFullYear()} DC SECURE GROUP, Lda. Todos os direitos reservados.</p>
+        <p>© {new Date().getFullYear()} DC SECURE GROUP, Lda. {t('footer.rightsReserved')}</p>
       </div>
 
     </div>
