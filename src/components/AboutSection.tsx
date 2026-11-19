@@ -20,7 +20,7 @@ export default function AboutSection() {
             <ScrollReveal animation="fade-right">
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-xl border border-slate-200 group bg-slate-100">
                 <Image 
-                  src="/images/headquarters.jpg"
+                  src="/images/headquarters.jpg?v=2"
                   alt="Sede Operacional da DC SECURE GROUP em Boane Matola Rio"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

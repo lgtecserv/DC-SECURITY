@@ -84,7 +84,7 @@ export default function ServicesSection() {
     {
       id: 'equipas-cinotecnicas',
       icon: Dog,
-      image: '/images/headquarters.jpg',
+      image: '/images/headquarters.jpg?v=2',
       badge: 'Alínea h)',
       title: 'Equipas Cinotécnicas (Cães de Guarda K9)',
       description: 'Patrulhas especializadas com binómios condutor-cão de guarda de raças nobres treinadas para deteção de intrusão e defesa de grandes perímetros.',

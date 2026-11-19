@@ -92,7 +92,7 @@ export default function QuemSomosPage() {
                   <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 group bg-slate-100">
                     <div className="aspect-[4/3] relative">
                       <Image 
-                        src="/images/headquarters.jpg"
+                        src="/images/headquarters.jpg?v=2"
                         alt="Sede Operacional da DC SECURE GROUP em Boane Matola Rio"
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-700"
